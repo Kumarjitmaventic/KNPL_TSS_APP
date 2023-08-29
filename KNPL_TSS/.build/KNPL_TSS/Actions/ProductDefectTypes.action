@@ -1,0 +1,5 @@
+{
+	"_Type": "Action.Type.Navigation",
+	"PageToOpen": "/KNPL_TSS/Pages/ProductDefectTypes.page",
+	"NavigationType": "Inner"
+}

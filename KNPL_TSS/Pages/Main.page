@@ -1,0 +1,71 @@
+{
+	"Controls": [
+		{
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"_Type": "Section.Type.SimplePropertyCollection",
+					"_Name": "SectionSimplePropertyCollection0",
+					"Header": {
+						"_Name": "SectionHeader1",
+						"UseTopPadding": true,
+						"Caption": "Vehicle Type"
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"SimplePropertyCells": [
+                        {
+							"SimplePropertyCell": {
+								"Styles": {
+									"Value": "homeval"
+								},
+								"Value": ">",
+								"_Name": "SectionSimplePropertyCell4",
+								"KeyName": "4 Wheeler",
+								"AccessoryType": "none",
+								"Visible": true,
+								"OnPress": "/KNPL_TSS/Rules/VehicleType_FourWheel.js"
+							}
+						},
+                        {
+							"SimplePropertyCell": {
+								"Styles": {
+									"Value": "homeval"
+								},
+								"Value": ">",
+								"_Name": "SectionSimplePropertyCell5",
+								"KeyName": "2 Wheeler",
+								"AccessoryType": "none",
+								"Visible": true,
+									"OnPress": "/KNPL_TSS/Rules/VehicleType_TwoWheel.js"
+							}
+						}
+					],
+					"Layout": {
+						"NumberOfColumns": 1
+					}
+				}
+			]
+		}
+	],
+	"_Type": "Page",
+	"_Name": "Main",
+	"Caption": "Home",
+	"ActionBar": {
+		"Items": [
+			{
+				"_Name": "ActionBarItem0",
+				"Caption": "Item",
+				"Icon": "sap-icon://customer",
+				"Position": "Right",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/KNPL_TSS/Actions/User_Profile.action"
+			}
+		],
+		"_Name": "ActionBar1"
+	}
+}

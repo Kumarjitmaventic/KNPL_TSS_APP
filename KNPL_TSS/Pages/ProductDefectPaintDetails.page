@@ -1,0 +1,98 @@
+{
+	"Controls": [
+		{
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+
+				{
+					"KeyAndValues": [
+						{
+							"Value": "{paintDetail/layer/name}",
+							"_Name": "KeyValue0",
+							"KeyName": "Layer:",
+							"Visible": true
+						},
+						{
+							"Value": "{paintDetail/targetSubstrate/name}",
+							"_Name": "KeyValue1",
+							"KeyName": "Target Substrate:",
+							"Visible": true
+						},
+						{
+							"Value": "{paintDetail/substrateMaterial/name}",
+							"_Name": "KeyValue2",
+							"KeyName": "Substrate Material:",
+							"Visible": true
+						},
+						{
+							"Value": "{paintDetail/paintType/name}",
+							"_Name": "KeyValue3",
+							"KeyName": "Paint Type:",
+							"Visible": true
+						},
+						{
+							"Value": "{paintDetail/crossLinkType/name}",
+							"_Name": "KeyValue4",
+							"KeyName": "Crosslink Type:",
+							"Visible": true
+						},
+						{
+							"Value": "{paintDetail/exteriorInterior/name}",
+							"_Name": "KeyValue5",
+							"KeyName": "Exterior/Interior:",
+							"Visible": true
+						},
+						{
+							"Value": "{paintDetail/atomization/name}",
+							"_Name": "KeyValue6",
+							"KeyName": "Application 1:",
+							"Visible": true
+						},
+						{
+							"Value": "{paintDetail/electrostatic/name}",
+							"_Name": "KeyValue7",
+							"KeyName": "Application 2:",
+							"Visible": true
+						},
+						{
+							"Value": "{paintDetail/composition/name}",
+							"_Name": "KeyValue8",
+							"KeyName": "Application 3:",
+							"Visible": true
+						},
+						{
+							"Value": "{paintDetail/dryingCondition/name}",
+							"_Name": "KeyValue9",
+							"KeyName": "Drying Condition:",
+							"Visible": true
+						}
+					],
+					"MaxItemCount": 1,
+					"_Type": "Section.Type.KeyValue",
+					"_Name": "SectionKeyValue0",
+					"Header": {
+						"_Name": "SectionHeader1",
+						"UseTopPadding": true,
+						"Caption": "Paint Details"
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false,
+                        "Caption": "$(L,'label_no_data_found')"
+					},
+					"Layout": {
+						"NumberOfColumns": 1
+					}
+				}
+			],
+			"LoadingIndicator": {
+				"Enabled": true,
+				"Text": ""
+			}
+		}
+	],
+	"_Type": "Page",
+	"_Name": "ProductDefectPaintDetails",
+	"Caption": "ProductDefectPaintDetails"
+}

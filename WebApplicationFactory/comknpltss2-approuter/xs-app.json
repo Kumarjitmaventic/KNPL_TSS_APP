@@ -1,0 +1,19 @@
+{
+	"authenticationMethod": "route",
+	"routes": [
+		{
+			"csrfProtection": false,
+			"source": "^/KNPL_TSS_UserService/(.*)$",
+			"target": "$1",
+			"destination": "KNPL_TSS_UserService",
+			"authenticationType": "xsuaa"
+		},
+		{
+			"csrfProtection": false,
+			"source": "^/KNPL_TSS_Destination/(.*)$",
+			"target": "$1",
+			"destination": "KNPL_TSS_Destination",
+			"authenticationType": "xsuaa"
+		}
+	]
+}

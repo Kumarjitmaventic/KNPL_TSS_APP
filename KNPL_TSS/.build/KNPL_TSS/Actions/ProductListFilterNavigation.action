@@ -1,0 +1,6 @@
+{
+	"_Type": "Action.Type.Filter",
+	"Filterable": "#Page:ProductList/#Control:SectionedTable0",
+	"PageToOpen": "/KNPL_TSS/Pages/ProductListFilter.page",
+	"ModalPageFullscreen": false
+}

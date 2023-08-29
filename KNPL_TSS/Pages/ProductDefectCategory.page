@@ -1,0 +1,77 @@
+{
+	"Controls": [
+		{
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"Header": {
+						"_Name": "SectionHeader0",
+						"UseTopPadding": true,
+						"Caption": "Defect Category"
+					},
+					"_Type": "Section.Type.ObjectTable",
+					"Target": {
+						"Service": "/KNPL_TSS/Services/com_knpl_tss.service",
+						"EntitySet": "MstrCategories",
+                        "QueryOptions": "/KNPL_TSS/Rules/Search_Category.js"
+					},
+					"_Name": "SectionObjectTable0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false,
+                        "Caption": "$(L,'label_no_data_found')"
+					},
+					"ObjectCell": {
+						"ContextMenu": {
+							"Items": [
+							],
+							"PerformFirstActionWithFullSwipe": true
+						},
+						"Title": "{name}",
+						"DetailImageIsCircular": false,
+						"PreserveIconStackSpacing": false,
+						"AccessoryType": "none",
+						"OnPress": "/KNPL_TSS/Actions/ProductDefectSubCategoryNavigation.action",
+						"Selected": false
+					},
+					"Search": {
+						"Enabled": true,
+                        "Placeholder": "$(L,'label_search')"
+					},
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"HighlightSelectedItem": false,
+					"Selection": {
+						"ExitOnLastDeselect": true,
+						"LongPressToEnable": "None",
+						"Mode": "None"
+					}
+				}
+			],
+			"LoadingIndicator": {
+				"Enabled": true,
+				"Text": ""
+			}
+		}
+	],
+	"_Type": "Page",
+	"_Name": "ProductDefectCategory",
+	"Caption": "/KNPL_TSS/Rules/VehicleType.js",
+     "ActionBar": {
+		"Items": [
+			{
+				"_Name": "ActionBarItem0",
+				"Caption": "",
+				"Icon": "sap-icon://filter",
+				"Position": "Right",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/KNPL_TSS/Actions/ProductDefectCategoryFilterNavigation.action"
+			}
+		],
+		"_Name": "ActionBar1"
+	}
+}

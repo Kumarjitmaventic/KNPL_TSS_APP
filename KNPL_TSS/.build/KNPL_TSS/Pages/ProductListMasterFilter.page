@@ -1,0 +1,68 @@
+{
+	"Controls": [
+		{
+			"_Type": "Control.Type.FormCellContainer",
+			"_Name": "FormCellContainer0",
+			"Sections": [
+				{
+					"Controls": [
+						{
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"_Name": "name",
+							"IsEditable": true,
+							"IsVisible": true,
+							"AllowMultipleSelection": true,
+							"AllowEmptySelection": true,
+							"Caption": "Defect Title",
+							"DataPaging": {
+								"LoadingIndicatorText": "",
+								"ShowLoadingIndicator": true
+							},
+							"PickerPrompt": "Please select multiple items",
+							"IsSelectedSectionEnabled": false,
+							"AllowDefaultValueIfOneItem": true,
+							"FilterProperty": "title",
+							"Search": {
+								"Enabled": false
+							},
+							"PickerItems": "/KNPL_TSS/Rules/UniqueDefectType.js"
+						}
+					],
+					"Caption": "Filter By",
+					"Visible": true
+				}
+			]
+		}
+	],
+	"_Type": "Page",
+	"_Name": "ProductListMasterFilter",
+	"Caption": "Filter",
+	"ActionBar": {
+		"Items": [
+			{
+				"Text": "Cancel",
+				"_Name": "ActionBarItem0",
+				"Caption": "",
+				"SystemItem": "Cancel",
+				"Position": "left",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/KNPL_TSS/Actions/CloseModalPage_Cancel.action"
+			},
+			{
+				"Text": "Done",
+				"_Name": "ActionBarItem1",
+				"Caption": "",
+				"SystemItem": "Done",
+				"Position": "right",
+				"IsIconCircular": false,
+				"Visible": true,
+				"OnPress": "/KNPL_TSS/Actions/CloseModalPage_Complete.action"
+			}
+		],
+		"_Name": "ActionBar1"
+	},
+	"Result": [
+		"#Page:ProductListMasterFilter/#Control:name/#FilterValue"
+	]
+}

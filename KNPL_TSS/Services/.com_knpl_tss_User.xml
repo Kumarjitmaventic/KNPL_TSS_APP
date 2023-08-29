@@ -1,0 +1,456 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="Core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UserService">
+            <EntityType Name="Users">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="userType_ID" Type="Edm.Guid"/>
+                <Property Name="name" Type="Edm.String" MaxLength="30"/>
+                <Property Name="email" Type="Edm.String" MaxLength="30"/>
+                <NavigationProperty Name="userType" Type="UserService.MstrUserTypes">
+                    <ReferentialConstraint Property="userType_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="MstrUserTypes">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="name" Type="Edm.String" MaxLength="60"/>
+            </EntityType>
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Users" EntityType="UserService.Users">
+                    <NavigationPropertyBinding Path="userType" Target="MstrUserTypes"/>
+                </EntitySet>
+                <EntitySet Name="MstrUserTypes" EntityType="UserService.MstrUserTypes"/>
+            </EntityContainer>
+            <Annotations Target="UserService.Users">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName">
+                            <String>
+                                User
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="TypeNamePlural">
+                            <String>
+                                User List
+                            </String>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>
+                            userType/name
+                        </PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value">
+                                <Path>
+                                    userType/name
+                                </Path>
+                            </PropertyValue>
+                            <PropertyValue Property="Label">
+                                <String>
+                                    User Type
+                                </String>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value">
+                                <Path>
+                                    name
+                                </Path>
+                            </PropertyValue>
+                            <PropertyValue Property="Label">
+                                <String>
+                                    Name
+                                </String>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value">
+                                <Path>
+                                    email
+                                </Path>
+                            </PropertyValue>
+                            <PropertyValue Property="Label">
+                                <String>
+                                    Email ID
+                                </String>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.EntityContainer/Users">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.Users/createdAt">
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Immutable">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Computed">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Common.Label">
+                    <String>
+                        Created On
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.Users/createdBy">
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Immutable">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Computed">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Description">
+                    <String>
+                        A user's unique ID
+                    </String>
+                </Annotation>
+                <Annotation Term="Common.Label">
+                    <String>
+                        Created By
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.Users/modifiedAt">
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Computed">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Common.Label">
+                    <String>
+                        Changed On
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.Users/modifiedBy">
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Computed">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Description">
+                    <String>
+                        A user's unique ID
+                    </String>
+                </Annotation>
+                <Annotation Term="Common.Label">
+                    <String>
+                        Changed By
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.Users/ID">
+                <Annotation Term="UI.Hidden">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.Users/userType">
+                <Annotation Term="UI.Hidden">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.Users/userType_ID">
+                <Annotation Term="UI.Hidden">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.Users/name">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Name
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.Users/email">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Email
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.EntityContainer/MstrUserTypes">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.MstrUserTypes/createdAt">
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Immutable">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Computed">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Common.Label">
+                    <String>
+                        Created On
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.MstrUserTypes/createdBy">
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Immutable">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Computed">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Description">
+                    <String>
+                        A user's unique ID
+                    </String>
+                </Annotation>
+                <Annotation Term="Common.Label">
+                    <String>
+                        Created By
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.MstrUserTypes/modifiedAt">
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Computed">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Common.Label">
+                    <String>
+                        Changed On
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.MstrUserTypes/modifiedBy">
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Computed">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Description">
+                    <String>
+                        A user's unique ID
+                    </String>
+                </Annotation>
+                <Annotation Term="Common.Label">
+                    <String>
+                        Changed By
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.MstrUserTypes/name">
+                <Annotation Term="Common.Label">
+                    <String>
+                        User Type
+                    </String>
+                </Annotation>
+                <Annotation Term="Common.Text">
+                    <Path>
+                        name
+                    </Path>
+                    <Annotation Term="UI.TextArrangement">
+                        <EnumMember>
+                            UI.TextArrangementType/TextOnly
+                        </EnumMember>
+                    </Annotation>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label">
+                            <String>
+                                MstrUserTypes
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="CollectionPath">
+                            <String>
+                                MstrUserTypes
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty">
+                                        <PropertyPath>
+                                            name
+                                        </PropertyPath>
+                                    </PropertyValue>
+                                    <PropertyValue Property="ValueListProperty">
+                                        <String>
+                                            name
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Core.Description">
+                    <String>
+                        MstrUserTypes
+                    </String>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

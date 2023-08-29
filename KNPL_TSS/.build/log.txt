@@ -1,0 +1,2 @@
+Pass:
+Generated bundle file /home/user/projects/KNPL_TSS-Android/KNPL_TSS/.build/KNPL_TSS/.build/uploadBundle.zip

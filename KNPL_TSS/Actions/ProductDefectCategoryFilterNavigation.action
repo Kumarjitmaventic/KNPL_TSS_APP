@@ -1,0 +1,6 @@
+{
+	"_Type": "Action.Type.Filter",
+	"Filterable": "#Page:ProductDefectCategory/#Control:SectionedTable0",
+	"PageToOpen": "/KNPL_TSS/Pages/ProductDefectCategoryFilter.page",
+	"ModalPageFullscreen": false
+}

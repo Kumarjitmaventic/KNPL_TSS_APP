@@ -1,0 +1,61 @@
+{
+	"Controls": [
+		{
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"KeyAndValues": [
+						{
+							"Value": "{defectdetails/category/name}",
+							"_Name": "KeyValue1",
+							"KeyName": "Category:",
+							"Visible": true
+						},
+						{
+							"Value": "{defectdetails/subCategory/name}",
+							"_Name": "KeyValue2",
+							"KeyName": "Sub Category:",
+							"Visible": true
+						},
+						{
+							"Value": "{defectdetails/JV/name}",
+							"_Name": "KeyValue3",
+							"KeyName": "JV:",
+							"Visible": true
+						},
+						{
+							"Value": "{defectdetails/mainCustomer/name}",
+							"_Name": "KeyValue4",
+							"KeyName": "Customer:",
+							"Visible": true
+						}
+					],
+					"MaxItemCount": 1,
+					"_Type": "Section.Type.KeyValue",
+					"_Name": "SectionKeyValue0",
+					"Header": {
+						"_Name": "SectionHeader1",
+						"UseTopPadding": true,
+						"Caption": "Defect Details"
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false,
+                        "Caption": "$(L,'label_no_data_found')"
+					},
+					"Layout": {
+						"NumberOfColumns": 1
+					}
+				}
+			],
+			"LoadingIndicator": {
+				"Enabled": true,
+				"Text": ""
+			}
+		}
+	],
+	"_Type": "Page",
+	"_Name": "ProductDefectDetails",
+	"Caption": "ProductDefectDetails"
+}

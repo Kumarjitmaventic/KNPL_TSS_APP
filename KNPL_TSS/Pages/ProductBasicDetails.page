@@ -1,0 +1,79 @@
+{
+	"Controls": [
+		{
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"KeyAndValues": [
+                        {
+							"Value": "{title}",
+							"_Name": "KeyValue7",
+							"KeyName": "Title:",
+							"Visible": true
+						},
+						{
+							"Value": "{product/name}",
+							"_Name": "KeyValue0",
+							"KeyName": "Product Name:",
+							"Visible": true
+						},
+                        {
+							"Value": "{vehicleType/name}",
+							"_Name": "KeyValue6",
+							"KeyName": "Vehicle Type:",
+							"Visible": true
+						},
+						{
+							"Value": "{createdBy}",
+							"_Name": "KeyValue1",
+							"KeyName": "Registerer:",
+							"Visible": true
+						},
+						{
+							"Value": "{problemDescription}",
+							"_Name": "KeyValue3",
+							"KeyName": "Problem Description:",
+							"Visible": true
+						},
+						{
+							"Value": "{causeOfProblem}",
+							"_Name": "KeyValue4",
+							"KeyName": "Cause Of Trouble:",
+							"Visible": true
+						},
+						{
+							"Value": "{countermeasureTaken}",
+							"_Name": "KeyValue5",
+							"KeyName": "Counter Measures Taken:",
+							"Visible": true
+						}
+					],
+					"MaxItemCount": 1,
+					"_Type": "Section.Type.KeyValue",
+					"_Name": "SectionKeyValue0",
+					"Header": {
+						"_Name": "SectionHeader1",
+						"UseTopPadding": true,
+						"Caption": "Basic Details"
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false,
+                        "Caption": "$(L,'label_no_data_found')"
+					},
+					"Layout": {
+						"NumberOfColumns": 1
+					}
+				}
+			],
+			"LoadingIndicator": {
+				"Enabled": true,
+				"Text": ""
+			}
+		}
+	],
+	"_Type": "Page",
+	"_Name": "ProductBasicDetails",
+	"Caption": "ProductBasicDetails"
+}

@@ -1,0 +1,1 @@
+destinations=[{"name":"KNPL_TSS_Destination","url":"https://KNPL_TSS_Destination.dest","proxyHost":"http://127.0.0.1","proxyPort":"8887"},{"name":"KNPL_TSS_UserService","url":"https://KNPL_TSS_UserService.dest","proxyHost":"http://127.0.0.1","proxyPort":"8887"}]

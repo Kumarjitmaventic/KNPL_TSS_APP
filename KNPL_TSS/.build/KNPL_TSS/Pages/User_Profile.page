@@ -1,0 +1,90 @@
+{
+	"Controls": [
+		{
+			"_Type": "Control.Type.SectionedTable",
+			"Target": {
+				"Service": "/KNPL_TSS/Services/com_knpl_tss_User.service",
+				"EntitySet": "Users"
+			},
+			"_Name": "SectionedTable0",
+			"Sections": [
+				{
+					"ProfileHeader": {
+						"DetailImageIsCircular": true,
+						"Headline": "{name}",
+						"Subheadline": "{userType/name}",
+						"Target": {
+							"Service": "/KNPL_TSS/Services/com_knpl_tss_User.service",
+							"EntitySet": "Users",
+							 "QueryOptions": "/KNPL_TSS/Rules/UserInfo.js"
+						},
+						"Styles": {
+							"BackgroundColor": "objectHeaderBackground"
+						}
+					},
+					"_Type": "Section.Type.ProfileHeader",
+					"_Name": "SectionProfileHeader0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false,
+                        "Caption": "$(L,'label_no_data_found')"
+					}
+				},
+				{
+					"KeyAndValues": [
+						{
+							"Value": "{email}",
+							"DataSubscriptions": [
+								"Customers"
+							],
+							"_Name": "KeyValue1",
+							"KeyName": "Email ID:",
+							"Visible": true
+						}
+					],
+					"MaxItemCount": 1,
+					"_Type": "Section.Type.KeyValue",
+					"Target": {
+						"Service": "/KNPL_TSS/Services/com_knpl_tss_User.service",
+						"EntitySet": "Users",
+						 "QueryOptions": "/KNPL_TSS/Rules/UserInfo.js"
+					},
+					"_Name": "SectionKeyValue0",
+					"Header": {
+						"_Name": "SectionHeader0",
+						"UseTopPadding": true,
+						"Caption": "Basic Details"
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false,
+                        "Caption": "$(L,'label_no_data_found')"
+					},
+					"Layout": {
+						"NumberOfColumns": 1
+					}
+				}
+			],
+			"LoadingIndicator": {
+				"Enabled": true,
+				"Text": ""
+			}
+		}
+	],
+	"_Type": "Page",
+	"_Name": "User_Profile",
+	"Caption": "My Profile",
+    "ToolBar": {
+		"Items": [
+			{
+				"_Type": "Control.Type.ToolbarItem",
+				"_Name": "LogoutToolbarItem",
+				"Caption": "Logout",
+				"Enabled": true,
+				"Visible": true,
+				"Clickable": true,
+				"OnPress": "/KNPL_TSS/Actions/Logout.action"
+			}
+		]
+	}
+}

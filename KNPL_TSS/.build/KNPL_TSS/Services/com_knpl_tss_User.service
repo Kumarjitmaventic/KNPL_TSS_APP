@@ -1,0 +1,9 @@
+{
+    "DestinationName": "KNPL_TSS_UserService",
+    "OfflineEnabled": false,
+    "LanguageURLParam": "",
+    "OnlineOptions": {},
+    "PathSuffix": "",
+    "SourceType": "Mobile",
+    "ServiceUrl":""
+}
