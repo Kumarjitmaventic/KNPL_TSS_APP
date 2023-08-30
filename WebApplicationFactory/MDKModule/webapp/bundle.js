@@ -134,12 +134,28 @@ function ProductList(context) {
     var custName = "contains(tolower(cust_name),'" + searchString.toLowerCase() + "')";
     var productName = "contains(tolower(name),'" + searchString.toLowerCase() + "')";
     var productCode = "contains(tolower(code),'" + searchString.toLowerCase() + "')";
+    var jvName = "contains(tolower(JV_name),'" + searchString.toLowerCase() + "')";
+    var ProblemDesc = "contains(tolower(problemDescription),'" + searchString.toLowerCase() + "')";
+    var targetSubstrate = "contains(tolower(targetSubstrate),'" + searchString.toLowerCase() + "')";
+    var substrateMaterial = "contains(tolower(substrateMaterial),'" + searchString.toLowerCase() + "')";
     var term1 = '(' + " ";
     if (custName != undefined) {
       term1 += custName + " or ";
     }
     if (productName != undefined) {
       term1 += productName + " or ";
+    }
+    if (jvName != undefined) {
+      term1 += jvName + " or ";
+    }
+    if (ProblemDesc != undefined) {
+      term1 += ProblemDesc + " or ";
+    }
+    if (targetSubstrate != undefined) {
+      term1 += targetSubstrate + " or ";
+    }
+    if (substrateMaterial != undefined) {
+      term1 += substrateMaterial + " or ";
     }
     if (productCode != undefined) {
       term1 += productCode + ")";
@@ -1345,7 +1361,7 @@ module.exports = {"Controls":[{"_Type":"Control.Type.SectionedTable","_Name":"Se
   \***********************************************************/
 /***/ ((module) => {
 
-module.exports = {"Controls":[{"_Type":"Control.Type.SectionedTable","_Name":"SectionedTable0","Sections":[{"Header":{"_Name":"SectionHeader0","UseTopPadding":true,"Caption":"Product List"},"_Type":"Section.Type.ObjectTable","Target":{"Service":"/KNPL_TSS/Services/com_knpl_tss.service","EntitySet":"GetProductsBySubCategoryAndVehicleType","QueryOptions":"/KNPL_TSS/Rules/ProductList.js","ServerSidePaging":true},"_Name":"SectionObjectTable0","Visible":true,"EmptySection":{"FooterVisible":false,"Caption":"$(L,'label_no_data_found')"},"ObjectCell":{"ContextMenu":{"Items":[],"PerformFirstActionWithFullSwipe":true},"Title":"{cust_name}","Subhead":"{name}","Footnote":"{code}","DetailImageIsCircular":false,"PreserveIconStackSpacing":false,"AccessoryType":"none","OnPress":"/KNPL_TSS/Actions/ProductDefectTypes.action","Selected":false},"Search":{"Enabled":true,"Placeholder":"$(L,'label_search')"},"DataPaging":{"ShowLoadingIndicator":false,"PageSize":150},"HighlightSelectedItem":false,"Selection":{"ExitOnLastDeselect":true,"LongPressToEnable":"None","Mode":"None"}}],"LoadingIndicator":{"Enabled":true,"Text":""}}],"_Type":"Page","_Name":"ProductList","Caption":"{name}","ActionBar":{"Items":[{"_Name":"ActionBarItem0","Caption":"","Icon":"sap-icon://filter","Position":"Right","IsIconCircular":false,"Visible":true,"OnPress":"/KNPL_TSS/Actions/ProductListFilterNavigation.action"}],"_Name":"ActionBar1"}}
+module.exports = {"Controls":[{"_Type":"Control.Type.SectionedTable","_Name":"SectionedTable0","Sections":[{"Header":{"_Name":"SectionHeader0","AccessoryType":"none","UseTopPadding":true,"Caption":"Product List"},"_Type":"Section.Type.ObjectTable","Target":{"Service":"/KNPL_TSS/Services/com_knpl_tss.service","EntitySet":"GetProductsBySubCategoryAndVehicleTypeCopy","QueryOptions":"/KNPL_TSS/Rules/ProductList.js","ServerSidePaging":true},"_Name":"SectionObjectTable0","Visible":true,"EmptySection":{"Caption":"$(L,'label_no_data_found')","FooterVisible":false},"ObjectCell":{"ContextMenu":{"Items":[],"PerformFirstActionWithFullSwipe":true},"Title":"{cust_name}","Subhead":"{name}","Footnote":"{code}","DetailImageIsCircular":false,"PreserveIconStackSpacing":false,"AccessoryType":"none","OnPress":"/KNPL_TSS/Actions/ProductDefectTypes.action","Selected":false},"Search":{"Enabled":true,"Placeholder":"$(L,'label_search')"},"DataPaging":{"ShowLoadingIndicator":false,"PageSize":150},"HighlightSelectedItem":false,"Selection":{"ExitOnLastDeselect":true,"LongPressToEnable":"None","Mode":"None"}}],"LoadingIndicator":{"Enabled":true,"Text":""}}],"_Type":"Page","_Name":"ProductList","Caption":"{name}","ActionBar":{"Items":[{"_Name":"ActionBarItem0","Caption":"","Icon":"sap-icon://filter","Position":"Right","IsIconCircular":false,"Visible":true,"OnPress":"/KNPL_TSS/Actions/ProductListFilterNavigation.action"}],"_Name":"ActionBar1"}}
 
 /***/ }),
 

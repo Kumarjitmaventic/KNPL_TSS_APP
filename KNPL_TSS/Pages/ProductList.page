@@ -7,26 +7,26 @@
 				{
 					"Header": {
 						"_Name": "SectionHeader0",
+						"AccessoryType": "none",
 						"UseTopPadding": true,
 						"Caption": "Product List"
 					},
 					"_Type": "Section.Type.ObjectTable",
 					"Target": {
 						"Service": "/KNPL_TSS/Services/com_knpl_tss.service",
-						"EntitySet": "GetProductsBySubCategoryAndVehicleType",
+						"EntitySet": "GetProductsBySubCategoryAndVehicleTypeCopy",
 						"QueryOptions": "/KNPL_TSS/Rules/ProductList.js",
-						"ServerSidePaging":true
+						"ServerSidePaging": true
 					},
 					"_Name": "SectionObjectTable0",
 					"Visible": true,
 					"EmptySection": {
-						"FooterVisible": false,
-                        "Caption": "$(L,'label_no_data_found')"
+						"Caption": "$(L,'label_no_data_found')",
+						"FooterVisible": false
 					},
 					"ObjectCell": {
 						"ContextMenu": {
-							"Items": [
-							],
+							"Items": [],
 							"PerformFirstActionWithFullSwipe": true
 						},
 						"Title": "{cust_name}",

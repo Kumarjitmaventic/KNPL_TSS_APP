@@ -22,6 +22,10 @@ export default function ProductList(context) {
         var custName = "contains(tolower(cust_name),'" +searchString.toLowerCase()+"')";
         var productName = "contains(tolower(name),'" +searchString.toLowerCase()+"')";
         var productCode = "contains(tolower(code),'" +searchString.toLowerCase()+"')";
+        var jvName = "contains(tolower(JV_name),'" +searchString.toLowerCase()+"')";
+        var ProblemDesc = "contains(tolower(problemDescription),'" +searchString.toLowerCase()+"')";
+        var targetSubstrate = "contains(tolower(targetSubstrate),'" +searchString.toLowerCase()+"')";
+        var substrateMaterial = "contains(tolower(substrateMaterial),'" +searchString.toLowerCase()+"')";
 
         var term1 = '('+" ";
        if(custName !=undefined){
@@ -30,6 +34,20 @@ export default function ProductList(context) {
        if(productName !=undefined){
         term1 += productName +" or ";
        }
+
+       if(jvName !=undefined){
+        term1 += jvName +" or ";
+       }
+       if(ProblemDesc !=undefined){
+        term1 += ProblemDesc +" or ";
+       }
+       if(targetSubstrate !=undefined){
+        term1 += targetSubstrate +" or ";
+       }
+       if(substrateMaterial !=undefined){
+        term1 += substrateMaterial +" or ";
+       }
+
        if(productCode !=undefined){
         term1 += productCode + ")";
        }

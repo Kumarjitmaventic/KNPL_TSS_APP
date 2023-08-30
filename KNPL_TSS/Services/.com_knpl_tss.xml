@@ -22,6 +22,7 @@
                 <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
                 <Property Name="name" Type="Edm.String" MaxLength="120"/>
                 <Property Name="code" Type="Edm.String" MaxLength="120"/>
+                <Property Name="category_ID" Type="Edm.Guid"/>
                 <Property Name="subCategory_ID" Type="Edm.Guid"/>
                 <Property Name="vehicleType_ID" Type="Edm.Guid"/>
                 <Property Name="vehicleType_name" Type="Edm.String" MaxLength="120"/>
@@ -31,6 +32,29 @@
                 <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
                 <NavigationProperty Name="DraftAdministrativeData" Type="DefectService.DraftAdministrativeData" ContainsTarget="true"/>
                 <NavigationProperty Name="SiblingEntity" Type="DefectService.GetProductsBySubCategoryAndVehicleType"/>
+            </EntityType>
+            <EntityType Name="GetProductsBySubCategoryAndVehicleTypeCopy">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="120"/>
+                <Property Name="code" Type="Edm.String" MaxLength="120"/>
+                <Property Name="category_ID" Type="Edm.Guid"/>
+                <Property Name="subCategory_ID" Type="Edm.Guid"/>
+                <Property Name="vehicleType_ID" Type="Edm.Guid"/>
+                <Property Name="vehicleType_name" Type="Edm.String" MaxLength="120"/>
+                <Property Name="cust_name" Type="Edm.String" MaxLength="120"/>
+                <Property Name="JV_name" Type="Edm.String" MaxLength="120"/>
+                <Property Name="problemDescription" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="targetSubstrate" Type="Edm.String" MaxLength="120"/>
+                <Property Name="substrateMaterial" Type="Edm.String" MaxLength="120"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Type="DefectService.DraftAdministrativeData" ContainsTarget="true"/>
+                <NavigationProperty Name="SiblingEntity" Type="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy"/>
             </EntityType>
             <EntityType Name="Products">
                 <Key>
@@ -58,13 +82,12 @@
                 <Property Name="product_ID" Type="Edm.Guid"/>
                 <Property Name="vehicleType_ID" Type="Edm.Guid"/>
                 <Property Name="mainCustomer_ID" Type="Edm.Guid"/>
-                <Property Name="defectType_ID" Type="Edm.Guid"/>
-                <Property Name="title" Type="Edm.String" MaxLength="120"/>
-                <Property Name="outline" Type="Edm.String" MaxLength="500"/>
-                <Property Name="causeOfTrouble" Type="Edm.String" MaxLength="500"/>
-                <Property Name="countermeasureTaken" Type="Edm.String" MaxLength="500"/>
-                <Property Name="occurrenceStartDate" Type="Edm.Date"/>
-                <Property Name="occurrenceEndDate" Type="Edm.Date"/>
+                <Property Name="title" Type="Edm.String" MaxLength="300"/>
+                <Property Name="problemDescription" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="causeOfProblem" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="countermeasureTaken" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="incidentDate" Type="Edm.Date"/>
+                <Property Name="recordDate" Type="Edm.Date"/>
                 <Property Name="category_ID" Type="Edm.Guid"/>
                 <Property Name="subCategory_ID" Type="Edm.Guid"/>
                 <Property Name="JV_ID" Type="Edm.Guid"/>
@@ -91,9 +114,6 @@
                 </NavigationProperty>
                 <NavigationProperty Name="mainCustomer" Type="DefectService.MainCustomers">
                     <ReferentialConstraint Property="mainCustomer_ID" ReferencedProperty="ID"/>
-                </NavigationProperty>
-                <NavigationProperty Name="defectType" Type="DefectService.MstrDefectTypes">
-                    <ReferentialConstraint Property="defectType_ID" ReferencedProperty="ID"/>
                 </NavigationProperty>
                 <NavigationProperty Name="category" Type="DefectService.MstrCategories">
                     <ReferentialConstraint Property="category_ID" ReferencedProperty="ID"/>
@@ -152,13 +172,12 @@
                 <Property Name="product_ID" Type="Edm.Guid"/>
                 <Property Name="vehicleType_ID" Type="Edm.Guid"/>
                 <Property Name="mainCustomer_ID" Type="Edm.Guid"/>
-                <Property Name="defectType_ID" Type="Edm.Guid"/>
-                <Property Name="title" Type="Edm.String" MaxLength="120"/>
-                <Property Name="outline" Type="Edm.String" MaxLength="500"/>
-                <Property Name="causeOfTrouble" Type="Edm.String" MaxLength="500"/>
-                <Property Name="countermeasureTaken" Type="Edm.String" MaxLength="500"/>
-                <Property Name="occurrenceStartDate" Type="Edm.Date"/>
-                <Property Name="occurrenceEndDate" Type="Edm.Date"/>
+                <Property Name="title" Type="Edm.String" MaxLength="300"/>
+                <Property Name="problemDescription" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="causeOfProblem" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="countermeasureTaken" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="incidentDate" Type="Edm.Date"/>
+                <Property Name="recordDate" Type="Edm.Date"/>
                 <Property Name="category_ID" Type="Edm.Guid"/>
                 <Property Name="subCategory_ID" Type="Edm.Guid"/>
                 <Property Name="JV_ID" Type="Edm.Guid"/>
@@ -185,9 +204,6 @@
                 </NavigationProperty>
                 <NavigationProperty Name="mainCustomer" Type="DefectService.MainCustomers">
                     <ReferentialConstraint Property="mainCustomer_ID" ReferencedProperty="ID"/>
-                </NavigationProperty>
-                <NavigationProperty Name="defectType" Type="DefectService.MstrDefectTypes">
-                    <ReferentialConstraint Property="defectType_ID" ReferencedProperty="ID"/>
                 </NavigationProperty>
                 <NavigationProperty Name="category" Type="DefectService.MstrCategories">
                     <ReferentialConstraint Property="category_ID" ReferencedProperty="ID"/>
@@ -466,6 +482,11 @@
                 <ReturnType Type="DefectService.GetProductsBySubCategoryAndVehicleType"/>
             </Action>
             <Action Name="draftPrepare" EntitySetPath="in" IsBound="true">
+                <Parameter Name="in" Type="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy"/>
+                <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+                <ReturnType Type="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy"/>
+            </Action>
+            <Action Name="draftPrepare" EntitySetPath="in" IsBound="true">
                 <Parameter Name="in" Type="DefectService.DefectDetails"/>
                 <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
                 <ReturnType Type="DefectService.DefectDetails"/>
@@ -475,6 +496,10 @@
                 <ReturnType Type="DefectService.GetProductsBySubCategoryAndVehicleType"/>
             </Action>
             <Action Name="draftActivate" EntitySetPath="in" IsBound="true">
+                <Parameter Name="in" Type="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy"/>
+                <ReturnType Type="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy"/>
+            </Action>
+            <Action Name="draftActivate" EntitySetPath="in" IsBound="true">
                 <Parameter Name="in" Type="DefectService.DefectDetails"/>
                 <ReturnType Type="DefectService.DefectDetails"/>
             </Action>
@@ -482,6 +507,11 @@
                 <Parameter Name="in" Type="DefectService.GetProductsBySubCategoryAndVehicleType"/>
                 <Parameter Name="PreserveChanges" Type="Edm.Boolean"/>
                 <ReturnType Type="DefectService.GetProductsBySubCategoryAndVehicleType"/>
+            </Action>
+            <Action Name="draftEdit" EntitySetPath="in" IsBound="true">
+                <Parameter Name="in" Type="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy"/>
+                <Parameter Name="PreserveChanges" Type="Edm.Boolean"/>
+                <ReturnType Type="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy"/>
             </Action>
             <Action Name="draftEdit" EntitySetPath="in" IsBound="true">
                 <Parameter Name="in" Type="DefectService.DefectDetails"/>
@@ -492,6 +522,9 @@
                 <EntitySet Name="GetProductsBySubCategoryAndVehicleType" EntityType="DefectService.GetProductsBySubCategoryAndVehicleType">
                     <NavigationPropertyBinding Path="SiblingEntity" Target="GetProductsBySubCategoryAndVehicleType"/>
                 </EntitySet>
+                <EntitySet Name="GetProductsBySubCategoryAndVehicleTypeCopy" EntityType="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy">
+                    <NavigationPropertyBinding Path="SiblingEntity" Target="GetProductsBySubCategoryAndVehicleTypeCopy"/>
+                </EntitySet>
                 <EntitySet Name="Products" EntityType="DefectService.Products">
                     <NavigationPropertyBinding Path="defectDetails" Target="DefectDetails"/>
                 </EntitySet>
@@ -499,7 +532,6 @@
                     <NavigationPropertyBinding Path="product" Target="Products"/>
                     <NavigationPropertyBinding Path="vehicleType" Target="MstrVehicleTypes"/>
                     <NavigationPropertyBinding Path="mainCustomer" Target="MainCustomers"/>
-                    <NavigationPropertyBinding Path="defectType" Target="MstrDefectTypes"/>
                     <NavigationPropertyBinding Path="category" Target="MstrCategories"/>
                     <NavigationPropertyBinding Path="subCategory" Target="MstrSubCategories"/>
                     <NavigationPropertyBinding Path="JV" Target="MstrJVs"/>
@@ -521,7 +553,6 @@
                     <NavigationPropertyBinding Path="product" Target="Products"/>
                     <NavigationPropertyBinding Path="vehicleType" Target="MstrVehicleTypes"/>
                     <NavigationPropertyBinding Path="mainCustomer" Target="MainCustomers"/>
-                    <NavigationPropertyBinding Path="defectType" Target="MstrDefectTypes"/>
                     <NavigationPropertyBinding Path="category" Target="MstrCategories"/>
                     <NavigationPropertyBinding Path="subCategory" Target="MstrSubCategories"/>
                     <NavigationPropertyBinding Path="JV" Target="MstrJVs"/>
@@ -598,13 +629,19 @@
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
                         <PropertyPath>
-                            defectType_ID
-                        </PropertyPath>
-                        <PropertyPath>
                             vehicleType_ID
                         </PropertyPath>
                         <PropertyPath>
-                            mainCustomer_ID
+                            mainCustomer/ID
+                        </PropertyPath>
+                        <PropertyPath>
+                            product_ID
+                        </PropertyPath>
+                        <PropertyPath>
+                            category_ID
+                        </PropertyPath>
+                        <PropertyPath>
+                            subCategory/ID
                         </PropertyPath>
                     </Collection>
                 </Annotation>
@@ -631,18 +668,6 @@
                             <PropertyValue Property="Label">
                                 <String>
                                     Title
-                                </String>
-                            </PropertyValue>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value">
-                                <Path>
-                                    defectType/name
-                                </Path>
-                            </PropertyValue>
-                            <PropertyValue Property="Label">
-                                <String>
-                                    Defect Type
                                 </String>
                             </PropertyValue>
                         </Record>
@@ -810,18 +835,6 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            defectType_ID
-                                        </Path>
-                                    </PropertyValue>
-                                    <PropertyValue Property="Label">
-                                        <String>
-                                            Defect Type
-                                        </String>
-                                    </PropertyValue>
-                                </Record>
-                                <Record Type="UI.DataField">
-                                    <PropertyValue Property="Value">
-                                        <Path>
                                             createdBy
                                         </Path>
                                     </PropertyValue>
@@ -834,7 +847,7 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            outline
+                                            problemDescription
                                         </Path>
                                     </PropertyValue>
                                     <PropertyValue Property="Label">
@@ -846,7 +859,7 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            causeOfTrouble
+                                            causeOfProblem
                                         </Path>
                                     </PropertyValue>
                                     <PropertyValue Property="Label">
@@ -870,24 +883,24 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            occurrenceStartDate
+                                            incidentDate
                                         </Path>
                                     </PropertyValue>
                                     <PropertyValue Property="Label">
                                         <String>
-                                            Occurrence Start Date
+                                            Incident Date
                                         </String>
                                     </PropertyValue>
                                 </Record>
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            occurrenceEndDate
+                                            recordDate
                                         </Path>
                                     </PropertyValue>
                                     <PropertyValue Property="Label">
                                         <String>
-                                            Occurrence End Date
+                                            Record Date
                                         </String>
                                     </PropertyValue>
                                 </Record>
@@ -1115,7 +1128,7 @@
                     </String>
                 </Annotation>
             </Annotations>
-            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleType/subCategory_ID">
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleType/category_ID">
                 <Annotation Term="Common.Text">
                     <Path>
                         name
@@ -1125,6 +1138,70 @@
                             UI.TextArrangementType/TextOnly
                         </EnumMember>
                     </Annotation>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleType/subCategory_ID">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Sub Category
+                    </String>
+                </Annotation>
+                <Annotation Term="Common.Text">
+                    <Path>
+                        name
+                    </Path>
+                    <Annotation Term="UI.TextArrangement">
+                        <EnumMember>
+                            UI.TextArrangementType/TextOnly
+                        </EnumMember>
+                    </Annotation>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label">
+                            <String>
+                                MstrSubCategories
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="CollectionPath">
+                            <String>
+                                MstrSubCategories
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty">
+                                        <PropertyPath>
+                                            ID
+                                        </PropertyPath>
+                                    </PropertyValue>
+                                    <PropertyValue Property="ValueListProperty">
+                                        <String>
+                                            ID
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty">
+                                        <String>
+                                            category/name
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Core.Description">
+                    <String>
+                        MstrSubCategories
+                    </String>
                 </Annotation>
             </Annotations>
             <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleType/vehicleType_ID">
@@ -1231,121 +1308,7 @@
                     </Bool>
                 </Annotation>
             </Annotations>
-            <Annotations Target="DefectService.Products/ID">
-                <Annotation Term="Common.Text">
-                    <Path>
-                        name
-                    </Path>
-                    <Annotation Term="UI.TextArrangement">
-                        <EnumMember>
-                            UI.TextArrangementType/TextOnly
-                        </EnumMember>
-                    </Annotation>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="DefectService.Products/createdAt">
-                <Annotation Term="UI.HiddenFilter">
-                    <Bool>
-                        true
-                    </Bool>
-                </Annotation>
-                <Annotation Term="Core.Immutable">
-                    <Bool>
-                        true
-                    </Bool>
-                </Annotation>
-                <Annotation Term="Core.Computed">
-                    <Bool>
-                        true
-                    </Bool>
-                </Annotation>
-                <Annotation Term="Common.Label">
-                    <String>
-                        Created On
-                    </String>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="DefectService.Products/createdBy">
-                <Annotation Term="UI.HiddenFilter">
-                    <Bool>
-                        true
-                    </Bool>
-                </Annotation>
-                <Annotation Term="Core.Immutable">
-                    <Bool>
-                        true
-                    </Bool>
-                </Annotation>
-                <Annotation Term="Core.Computed">
-                    <Bool>
-                        true
-                    </Bool>
-                </Annotation>
-                <Annotation Term="Core.Description">
-                    <String>
-                        A user's unique ID
-                    </String>
-                </Annotation>
-                <Annotation Term="Common.Label">
-                    <String>
-                        Created By
-                    </String>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="DefectService.Products/modifiedAt">
-                <Annotation Term="UI.HiddenFilter">
-                    <Bool>
-                        true
-                    </Bool>
-                </Annotation>
-                <Annotation Term="Core.Computed">
-                    <Bool>
-                        true
-                    </Bool>
-                </Annotation>
-                <Annotation Term="Common.Label">
-                    <String>
-                        Changed On
-                    </String>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="DefectService.Products/modifiedBy">
-                <Annotation Term="UI.HiddenFilter">
-                    <Bool>
-                        true
-                    </Bool>
-                </Annotation>
-                <Annotation Term="Core.Computed">
-                    <Bool>
-                        true
-                    </Bool>
-                </Annotation>
-                <Annotation Term="Core.Description">
-                    <String>
-                        A user's unique ID
-                    </String>
-                </Annotation>
-                <Annotation Term="Common.Label">
-                    <String>
-                        Changed By
-                    </String>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="DefectService.Products/code">
-                <Annotation Term="Common.Label">
-                    <String>
-                        Product Code
-                    </String>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="DefectService.Products/name">
-                <Annotation Term="Common.Label">
-                    <String>
-                        Product Name
-                    </String>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="DefectService.DefectDetails">
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy">
                 <Annotation Term="UI.HeaderInfo">
                     <Record Type="UI.HeaderInfoType">
                         <PropertyValue Property="TypeName">
@@ -1381,13 +1344,19 @@
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
                         <PropertyPath>
-                            defectType_ID
-                        </PropertyPath>
-                        <PropertyPath>
                             vehicleType_ID
                         </PropertyPath>
                         <PropertyPath>
-                            mainCustomer_ID
+                            mainCustomer/ID
+                        </PropertyPath>
+                        <PropertyPath>
+                            product_ID
+                        </PropertyPath>
+                        <PropertyPath>
+                            category_ID
+                        </PropertyPath>
+                        <PropertyPath>
+                            subCategory/ID
                         </PropertyPath>
                     </Collection>
                 </Annotation>
@@ -1414,18 +1383,6 @@
                             <PropertyValue Property="Label">
                                 <String>
                                     Title
-                                </String>
-                            </PropertyValue>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value">
-                                <Path>
-                                    defectType/name
-                                </Path>
-                            </PropertyValue>
-                            <PropertyValue Property="Label">
-                                <String>
-                                    Defect Type
                                 </String>
                             </PropertyValue>
                         </Record>
@@ -1593,18 +1550,6 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            defectType_ID
-                                        </Path>
-                                    </PropertyValue>
-                                    <PropertyValue Property="Label">
-                                        <String>
-                                            Defect Type
-                                        </String>
-                                    </PropertyValue>
-                                </Record>
-                                <Record Type="UI.DataField">
-                                    <PropertyValue Property="Value">
-                                        <Path>
                                             createdBy
                                         </Path>
                                     </PropertyValue>
@@ -1617,7 +1562,7 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            outline
+                                            problemDescription
                                         </Path>
                                     </PropertyValue>
                                     <PropertyValue Property="Label">
@@ -1629,7 +1574,7 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            causeOfTrouble
+                                            causeOfProblem
                                         </Path>
                                     </PropertyValue>
                                     <PropertyValue Property="Label">
@@ -1653,24 +1598,891 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            occurrenceStartDate
+                                            incidentDate
                                         </Path>
                                     </PropertyValue>
                                     <PropertyValue Property="Label">
                                         <String>
-                                            Occurrence Start Date
+                                            Incident Date
                                         </String>
                                     </PropertyValue>
                                 </Record>
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            occurrenceEndDate
+                                            recordDate
                                         </Path>
                                     </PropertyValue>
                                     <PropertyValue Property="Label">
                                         <String>
-                                            Occurrence End Date
+                                            Record Date
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Main2">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            category_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Category
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            subCategory_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Sub Category
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            JV_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Issued By (JV)
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Main3">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            layer_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Layer
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            targetSubstrate_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Target Substrate
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            substrateMaterial_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Substrate Material
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            paintType_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Paint Type
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            crossLinkType_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Crosslink Type
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            exteriorInterior_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Exterior/Interior
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            atomization_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Application 1 (Atomization)
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            electrostatic_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Application 2 (Electrostatic)
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            composition_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Application 3 (Composition)
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            dryingCondition_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Drying Condition
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.EntityContainer/GetProductsBySubCategoryAndVehicleTypeCopy">
+                <Annotation Term="Common.DraftRoot">
+                    <Record Type="Common.DraftRootType">
+                        <PropertyValue Property="ActivationAction">
+                            <String>
+                                DefectService.draftActivate
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="EditAction">
+                            <String>
+                                DefectService.draftEdit
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="PreparationAction">
+                            <String>
+                                DefectService.draftPrepare
+                            </String>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/ID">
+                <Annotation Term="Common.Text">
+                    <Path>
+                        name
+                    </Path>
+                    <Annotation Term="UI.TextArrangement">
+                        <EnumMember>
+                            UI.TextArrangementType/TextOnly
+                        </EnumMember>
+                    </Annotation>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/name">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Product Name
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/code">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Product Code
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/category_ID">
+                <Annotation Term="Common.Text">
+                    <Path>
+                        name
+                    </Path>
+                    <Annotation Term="UI.TextArrangement">
+                        <EnumMember>
+                            UI.TextArrangementType/TextOnly
+                        </EnumMember>
+                    </Annotation>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/subCategory_ID">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Sub Category
+                    </String>
+                </Annotation>
+                <Annotation Term="Common.Text">
+                    <Path>
+                        name
+                    </Path>
+                    <Annotation Term="UI.TextArrangement">
+                        <EnumMember>
+                            UI.TextArrangementType/TextOnly
+                        </EnumMember>
+                    </Annotation>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label">
+                            <String>
+                                MstrSubCategories
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="CollectionPath">
+                            <String>
+                                MstrSubCategories
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty">
+                                        <PropertyPath>
+                                            ID
+                                        </PropertyPath>
+                                    </PropertyValue>
+                                    <PropertyValue Property="ValueListProperty">
+                                        <String>
+                                            ID
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty">
+                                        <String>
+                                            category/name
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Core.Description">
+                    <String>
+                        MstrSubCategories
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/vehicleType_ID">
+                <Annotation Term="Common.Text">
+                    <Path>
+                        name
+                    </Path>
+                    <Annotation Term="UI.TextArrangement">
+                        <EnumMember>
+                            UI.TextArrangementType/TextOnly
+                        </EnumMember>
+                    </Annotation>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/vehicleType_name">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Vehicle Type
+                    </String>
+                </Annotation>
+                <Annotation Term="Common.Text">
+                    <Path>
+                        name
+                    </Path>
+                    <Annotation Term="UI.TextArrangement">
+                        <EnumMember>
+                            UI.TextArrangementType/TextOnly
+                        </EnumMember>
+                    </Annotation>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label">
+                            <String>
+                                MstrVehicleTypes
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="CollectionPath">
+                            <String>
+                                MstrVehicleTypes
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty">
+                                        <PropertyPath>
+                                            name
+                                        </PropertyPath>
+                                    </PropertyValue>
+                                    <PropertyValue Property="ValueListProperty">
+                                        <String>
+                                            name
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Core.Description">
+                    <String>
+                        VehicleTypes
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/cust_name">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Main Customer
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/JV_name">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Issued By (JV)
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/problemDescription">
+                <Annotation Term="UI.MultiLineText">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Common.FieldControl">
+                    <EnumMember>
+                        Common.FieldControlType/Mandatory
+                    </EnumMember>
+                </Annotation>
+                <Annotation Term="Common.Label">
+                    <String>
+                        Problem Description
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/targetSubstrate">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Target Substrate
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/substrateMaterial">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Substrate Material
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/IsActiveEntity">
+                <Annotation Term="UI.Hidden">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/HasActiveEntity">
+                <Annotation Term="UI.Hidden">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/HasDraftEntity">
+                <Annotation Term="UI.Hidden">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.GetProductsBySubCategoryAndVehicleTypeCopy/DraftAdministrativeData">
+                <Annotation Term="UI.Hidden">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.Products/ID">
+                <Annotation Term="Common.Text">
+                    <Path>
+                        name
+                    </Path>
+                    <Annotation Term="UI.TextArrangement">
+                        <EnumMember>
+                            UI.TextArrangementType/TextOnly
+                        </EnumMember>
+                    </Annotation>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.Products/createdAt">
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Immutable">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Computed">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Common.Label">
+                    <String>
+                        Created On
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.Products/createdBy">
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Immutable">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Computed">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Description">
+                    <String>
+                        A user's unique ID
+                    </String>
+                </Annotation>
+                <Annotation Term="Common.Label">
+                    <String>
+                        Created By
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.Products/modifiedAt">
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Computed">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Common.Label">
+                    <String>
+                        Changed On
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.Products/modifiedBy">
+                <Annotation Term="UI.HiddenFilter">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Computed">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Core.Description">
+                    <String>
+                        A user's unique ID
+                    </String>
+                </Annotation>
+                <Annotation Term="Common.Label">
+                    <String>
+                        Changed By
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.Products/code">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Product Code
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.Products/name">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Product Name
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.DefectDetails">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName">
+                            <String>
+                                Defect
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="TypeNamePlural">
+                            <String>
+                                Defect List
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value">
+                                    <Path>
+                                        title
+                                    </Path>
+                                </PropertyValue>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value">
+                                    <Path>
+                                        defectId
+                                    </Path>
+                                </PropertyValue>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>
+                            vehicleType_ID
+                        </PropertyPath>
+                        <PropertyPath>
+                            mainCustomer/ID
+                        </PropertyPath>
+                        <PropertyPath>
+                            product_ID
+                        </PropertyPath>
+                        <PropertyPath>
+                            category_ID
+                        </PropertyPath>
+                        <PropertyPath>
+                            subCategory/ID
+                        </PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value">
+                                <Path>
+                                    defectId
+                                </Path>
+                            </PropertyValue>
+                            <PropertyValue Property="Label">
+                                <String>
+                                    Defect ID
+                                </String>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value">
+                                <Path>
+                                    title
+                                </Path>
+                            </PropertyValue>
+                            <PropertyValue Property="Label">
+                                <String>
+                                    Title
+                                </String>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value">
+                                <Path>
+                                    product/name
+                                </Path>
+                            </PropertyValue>
+                            <PropertyValue Property="Label">
+                                <String>
+                                    Product Name
+                                </String>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value">
+                                <Path>
+                                    vehicleType/name
+                                </Path>
+                            </PropertyValue>
+                            <PropertyValue Property="Label">
+                                <String>
+                                    Vehicle Type
+                                </String>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value">
+                                <Path>
+                                    mainCustomer/name
+                                </Path>
+                            </PropertyValue>
+                            <PropertyValue Property="Label">
+                                <String>
+                                    Main Customer
+                                </String>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label">
+                                <String>
+                                    Defect Details
+                                </String>
+                            </PropertyValue>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Target">
+                                            <AnnotationPath>
+                                                @UI.FieldGroup#ProductDetails
+                                            </AnnotationPath>
+                                        </PropertyValue>
+                                        <PropertyValue Property="Label">
+                                            <String>
+                                                Product Details
+                                            </String>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Target">
+                                            <AnnotationPath>
+                                                @UI.FieldGroup#Main
+                                            </AnnotationPath>
+                                        </PropertyValue>
+                                        <PropertyValue Property="Label">
+                                            <String>
+                                                Basic Details
+                                            </String>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Target">
+                                            <AnnotationPath>
+                                                @UI.FieldGroup#Main2
+                                            </AnnotationPath>
+                                        </PropertyValue>
+                                        <PropertyValue Property="Label">
+                                            <String>
+                                                Defect Details
+                                            </String>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Target">
+                                            <AnnotationPath>
+                                                @UI.FieldGroup#Main3
+                                            </AnnotationPath>
+                                        </PropertyValue>
+                                        <PropertyValue Property="Label">
+                                            <String>
+                                                Paint Details
+                                            </String>
+                                        </PropertyValue>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Target">
+                                            <AnnotationPath>
+                                                versions/@UI.LineItem
+                                            </AnnotationPath>
+                                        </PropertyValue>
+                                        <PropertyValue Property="Label">
+                                            <String>
+                                                Versions
+                                            </String>
+                                        </PropertyValue>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="ProductDetails">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            product_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Product Name
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            vehicleType_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Vehicle Type
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            mainCustomer_ID
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Customer
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Main">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            createdBy
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Registerer
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            problemDescription
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Problem Description
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            causeOfProblem
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Cause of Problem
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            countermeasureTaken
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Counter Measures Taken
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            incidentDate
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Incident Date
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value">
+                                        <Path>
+                                            recordDate
+                                        </Path>
+                                    </PropertyValue>
+                                    <PropertyValue Property="Label">
+                                        <String>
+                                            Record Date
                                         </String>
                                     </PropertyValue>
                                 </Record>
@@ -2262,97 +3074,6 @@
                     </Bool>
                 </Annotation>
             </Annotations>
-            <Annotations Target="DefectService.DefectDetails/defectType">
-                <Annotation Term="Common.Label">
-                    <String>
-                        Defect Type
-                    </String>
-                </Annotation>
-                <Annotation Term="Core.Description">
-                    <String>
-                        MstrDefectTypes
-                    </String>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="DefectService.DefectDetails/defectType_ID">
-                <Annotation Term="Common.Label">
-                    <String>
-                        Defect Type
-                    </String>
-                </Annotation>
-                <Annotation Term="Common.Text">
-                    <Path>
-                        defectType/name
-                    </Path>
-                    <Annotation Term="UI.TextArrangement">
-                        <EnumMember>
-                            UI.TextArrangementType/TextOnly
-                        </EnumMember>
-                    </Annotation>
-                </Annotation>
-                <Annotation Term="Common.ValueListWithFixedValues">
-                    <Bool>
-                        true
-                    </Bool>
-                </Annotation>
-                <Annotation Term="Common.ValueList">
-                    <Record Type="Common.ValueListType">
-                        <PropertyValue Property="Label">
-                            <String>
-                                MstrDefectTypes
-                            </String>
-                        </PropertyValue>
-                        <PropertyValue Property="CollectionPath">
-                            <String>
-                                MstrDefectTypes
-                            </String>
-                        </PropertyValue>
-                        <PropertyValue Property="Parameters">
-                            <Collection>
-                                <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="ValueListProperty">
-                                        <String>
-                                            ID
-                                        </String>
-                                    </PropertyValue>
-                                    <PropertyValue Property="LocalDataProperty">
-                                        <PropertyPath>
-                                            defectType_ID
-                                        </PropertyPath>
-                                    </PropertyValue>
-                                </Record>
-                                <Record Type="Common.ValueListParameterOut">
-                                    <PropertyValue Property="ValueListProperty">
-                                        <String>
-                                            name
-                                        </String>
-                                    </PropertyValue>
-                                    <PropertyValue Property="LocalDataProperty">
-                                        <PropertyPath>
-                                            defectType/name
-                                        </PropertyPath>
-                                    </PropertyValue>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="Common.FieldControl">
-                    <EnumMember>
-                        Common.FieldControlType/Mandatory
-                    </EnumMember>
-                </Annotation>
-                <Annotation Term="Core.Description">
-                    <String>
-                        MstrDefectTypes
-                    </String>
-                </Annotation>
-                <Annotation Term="Core.Immutable">
-                    <Bool>
-                        true
-                    </Bool>
-                </Annotation>
-            </Annotations>
             <Annotations Target="DefectService.DefectDetails/title">
                 <Annotation Term="Core.Immutable">
                     <Bool>
@@ -2370,7 +3091,7 @@
                     </String>
                 </Annotation>
             </Annotations>
-            <Annotations Target="DefectService.DefectDetails/outline">
+            <Annotations Target="DefectService.DefectDetails/problemDescription">
                 <Annotation Term="UI.MultiLineText">
                     <Bool>
                         true
@@ -2383,11 +3104,11 @@
                 </Annotation>
                 <Annotation Term="Common.Label">
                     <String>
-                        Outline
+                        Problem Description
                     </String>
                 </Annotation>
             </Annotations>
-            <Annotations Target="DefectService.DefectDetails/causeOfTrouble">
+            <Annotations Target="DefectService.DefectDetails/causeOfProblem">
                 <Annotation Term="UI.MultiLineText">
                     <Bool>
                         true
@@ -2400,7 +3121,7 @@
                 </Annotation>
                 <Annotation Term="Common.Label">
                     <String>
-                        Cause of trouble
+                        Cause of Problem
                     </String>
                 </Annotation>
             </Annotations>
@@ -2421,10 +3142,10 @@
                     </String>
                 </Annotation>
             </Annotations>
-            <Annotations Target="DefectService.DefectDetails/occurrenceStartDate">
+            <Annotations Target="DefectService.DefectDetails/incidentDate">
                 <Annotation Term="Common.Label">
                     <String>
-                        Occurrence Start Date
+                        Incident Date
                     </String>
                 </Annotation>
                 <Annotation Term="Common.FieldControl">
@@ -2433,10 +3154,10 @@
                     </EnumMember>
                 </Annotation>
             </Annotations>
-            <Annotations Target="DefectService.DefectDetails/occurrenceEndDate">
+            <Annotations Target="DefectService.DefectDetails/recordDate">
                 <Annotation Term="Common.Label">
                     <String>
-                        Occurrence End Date
+                        Record Date
                     </String>
                 </Annotation>
                 <Annotation Term="Common.FieldControl">
@@ -3766,12 +4487,12 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            defectType_ID
+                                            title
                                         </Path>
                                     </PropertyValue>
                                     <PropertyValue Property="Label">
                                         <String>
-                                            Defect Type
+                                            Title
                                         </String>
                                     </PropertyValue>
                                 </Record>
@@ -3790,7 +4511,7 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            outline
+                                            problemDescription
                                         </Path>
                                     </PropertyValue>
                                     <PropertyValue Property="Label">
@@ -3802,7 +4523,7 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            causeOfTrouble
+                                            causeOfProblem
                                         </Path>
                                     </PropertyValue>
                                     <PropertyValue Property="Label">
@@ -3826,24 +4547,24 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            occurrenceStartDate
+                                            incidentDate
                                         </Path>
                                     </PropertyValue>
                                     <PropertyValue Property="Label">
                                         <String>
-                                            Occurrence Start Date
+                                            Incident Date
                                         </String>
                                     </PropertyValue>
                                 </Record>
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value">
                                         <Path>
-                                            occurrenceEndDate
+                                            recordDate
                                         </Path>
                                     </PropertyValue>
                                     <PropertyValue Property="Label">
                                         <String>
-                                            Occurrence End Date
+                                            Record Date
                                         </String>
                                     </PropertyValue>
                                 </Record>
@@ -4422,87 +5143,6 @@
                     </String>
                 </Annotation>
             </Annotations>
-            <Annotations Target="DefectService.DefectDetailVersions/defectType">
-                <Annotation Term="Common.Label">
-                    <String>
-                        Defect Type
-                    </String>
-                </Annotation>
-                <Annotation Term="Core.Description">
-                    <String>
-                        MstrDefectTypes
-                    </String>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="DefectService.DefectDetailVersions/defectType_ID">
-                <Annotation Term="Common.Label">
-                    <String>
-                        Defect Type
-                    </String>
-                </Annotation>
-                <Annotation Term="Common.Text">
-                    <Path>
-                        defectType/name
-                    </Path>
-                    <Annotation Term="UI.TextArrangement">
-                        <EnumMember>
-                            UI.TextArrangementType/TextOnly
-                        </EnumMember>
-                    </Annotation>
-                </Annotation>
-                <Annotation Term="Common.ValueListWithFixedValues">
-                    <Bool>
-                        true
-                    </Bool>
-                </Annotation>
-                <Annotation Term="Common.ValueList">
-                    <Record Type="Common.ValueListType">
-                        <PropertyValue Property="Label">
-                            <String>
-                                MstrDefectTypes
-                            </String>
-                        </PropertyValue>
-                        <PropertyValue Property="CollectionPath">
-                            <String>
-                                MstrDefectTypes
-                            </String>
-                        </PropertyValue>
-                        <PropertyValue Property="Parameters">
-                            <Collection>
-                                <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="ValueListProperty">
-                                        <String>
-                                            ID
-                                        </String>
-                                    </PropertyValue>
-                                    <PropertyValue Property="LocalDataProperty">
-                                        <PropertyPath>
-                                            defectType_ID
-                                        </PropertyPath>
-                                    </PropertyValue>
-                                </Record>
-                                <Record Type="Common.ValueListParameterOut">
-                                    <PropertyValue Property="ValueListProperty">
-                                        <String>
-                                            name
-                                        </String>
-                                    </PropertyValue>
-                                    <PropertyValue Property="LocalDataProperty">
-                                        <PropertyPath>
-                                            defectType/name
-                                        </PropertyPath>
-                                    </PropertyValue>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="Core.Description">
-                    <String>
-                        MstrDefectTypes
-                    </String>
-                </Annotation>
-            </Annotations>
             <Annotations Target="DefectService.DefectDetailVersions/title">
                 <Annotation Term="Common.Label">
                     <String>
@@ -4510,17 +5150,17 @@
                     </String>
                 </Annotation>
             </Annotations>
-            <Annotations Target="DefectService.DefectDetailVersions/outline">
+            <Annotations Target="DefectService.DefectDetailVersions/problemDescription">
                 <Annotation Term="Common.Label">
                     <String>
-                        Outline
+                        Problem Description
                     </String>
                 </Annotation>
             </Annotations>
-            <Annotations Target="DefectService.DefectDetailVersions/causeOfTrouble">
+            <Annotations Target="DefectService.DefectDetailVersions/causeOfProblem">
                 <Annotation Term="Common.Label">
                     <String>
-                        Cause of trouble
+                        Cause of Problem
                     </String>
                 </Annotation>
             </Annotations>
@@ -5568,6 +6208,11 @@
                 </Annotation>
             </Annotations>
             <Annotations Target="DefectService.MainCustomers/ID">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Main Customer
+                    </String>
+                </Annotation>
                 <Annotation Term="Common.Text">
                     <Path>
                         name
@@ -5577,6 +6222,53 @@
                             UI.TextArrangementType/TextOnly
                         </EnumMember>
                     </Annotation>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label">
+                            <String>
+                                MainCustomers
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="CollectionPath">
+                            <String>
+                                MainCustomers
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty">
+                                        <PropertyPath>
+                                            ID
+                                        </PropertyPath>
+                                    </PropertyValue>
+                                    <PropertyValue Property="ValueListProperty">
+                                        <String>
+                                            ID
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty">
+                                        <String>
+                                            vehicleType/name
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Core.Description">
+                    <String>
+                        MainCustomers
+                    </String>
                 </Annotation>
             </Annotations>
             <Annotations Target="DefectService.MainCustomers/createdAt">
@@ -6236,6 +6928,11 @@
                 </Annotation>
             </Annotations>
             <Annotations Target="DefectService.MstrSubCategories/ID">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Sub Category
+                    </String>
+                </Annotation>
                 <Annotation Term="Common.Text">
                     <Path>
                         name
@@ -6245,6 +6942,53 @@
                             UI.TextArrangementType/TextOnly
                         </EnumMember>
                     </Annotation>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label">
+                            <String>
+                                MstrSubCategories
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="CollectionPath">
+                            <String>
+                                MstrSubCategories
+                            </String>
+                        </PropertyValue>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty">
+                                        <PropertyPath>
+                                            ID
+                                        </PropertyPath>
+                                    </PropertyValue>
+                                    <PropertyValue Property="ValueListProperty">
+                                        <String>
+                                            ID
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty">
+                                        <String>
+                                            category/name
+                                        </String>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Core.Description">
+                    <String>
+                        MstrSubCategories
+                    </String>
                 </Annotation>
             </Annotations>
             <Annotations Target="DefectService.MstrSubCategories/createdAt">

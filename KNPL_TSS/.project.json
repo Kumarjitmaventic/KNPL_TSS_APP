@@ -32,14 +32,14 @@
 		"AdminAPI": "https://mobile-service-cockpit-api.cfapps.ap11.hana.ondemand.com/cockpit/v1/org/1b01672e-7606-459d-97fa-8892876e3357/space/4547f468-244a-42b9-ac36-331d05c37981",
 		"AppId": "com.knpl.tss2",
 		"Destination": [
-			"com.knpl.tss",
-			"Annotation_Destination"
+			"KNPL_TSS_Destination",
+			"KNPL_TSS_UserService"
 		]
 	},
 	"Onboarding": {
 		"Schema": "sapmobilesvcs",
 		"TimeZone": "UTC",
-		"URL": "sapmobilesvcs://?AppId=com.knpl.tss&ClientId=a134ce87-950d-43cb-b93d-e3872c59b14d&ServerUrl=https://knpl-painter-dev-dev-com-knpl-tss.cfapps.ap10.hana.ondemand.com&SapCloudPlatformEndpoint=https://knpl-painter-dev-dev-com-knpl-tss.cfapps.ap10.hana.ondemand.com&AuthorizationEndpointUrl=https://knpl-painter-dev-dev-com-knpl-tss.cfapps.ap10.hana.ondemand.com/oauth2/api/v1/authorize&RedirectUrl=https://knpl-painter-dev-dev-com-knpl-tss.cfapps.ap10.hana.ondemand.com&TokenUrl=https://knpl-painter-dev-dev-com-knpl-tss.cfapps.ap10.hana.ondemand.com/oauth2/api/v1/token"
+		"URL": "sapmobilesvcs://?AppId=com.knpl.tss2&ClientId=839b23ae-bdf3-45f7-8b27-b599760e56d0&ServerUrl=https://knpl-dev-projects-tss-com-knpl-tss2.cfapps.ap11.hana.ondemand.com&SapCloudPlatformEndpoint=https://knpl-dev-projects-tss-com-knpl-tss2.cfapps.ap11.hana.ondemand.com&AuthorizationEndpointUrl=https://knpl-dev-projects-tss-com-knpl-tss2.cfapps.ap11.hana.ondemand.com/oauth2/api/v1/authorize&RedirectUrl=https://knpl-dev-projects-tss-com-knpl-tss2.cfapps.ap11.hana.ondemand.com&TokenUrl=https://knpl-dev-projects-tss-com-knpl-tss2.cfapps.ap11.hana.ondemand.com/oauth2/api/v1/token&multiUser=false"
 	},
 	"LCAP": {
 		"FullName": "",
