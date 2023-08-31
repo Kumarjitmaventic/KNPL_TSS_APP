@@ -1,9 +1,5 @@
 {
-    "DestinationName": "KNPL_TSS_Destination",
-    "OfflineEnabled": false,
-    "LanguageURLParam": "",
-    "OnlineOptions": {},
-    "PathSuffix": "",
-    "SourceType": "Mobile",
-    "ServiceUrl":""
+	"DestinationName": "KNPL_TSS_Destination",
+	"OfflineEnabled": false,
+	"SourceType": "Mobile"
 }

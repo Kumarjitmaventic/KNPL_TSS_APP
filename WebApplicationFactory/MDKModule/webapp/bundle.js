@@ -125,7 +125,7 @@ function ProductList(context) {
     //return "$expand=defectDetails($expand=mainCustomer),vehicleType($filter=name eq '" +vType+"'),subCategory($filter=name eq '" +context.binding.name+"')";
     //new chnages
     //return "$filter=vehicleType/name eq '" +vType+"' and subCategory/ID eq '" +context.binding.ID+"'&$expand=vehicleType,subCategory,product,mainCustomer";
-    return "$filter=vehicleType_name eq '" + vType + "' and category_ID eq " + context.binding.category.ID + " and subCategory_ID eq " + context.binding.ID + "";
+    return "$filter=vehicleType_name eq '" + vType + "' and category_ID eq " + context.binding.category_ID + " and subCategory_ID eq " + context.binding.ID + "";
     //return "$expand=category&$filter=category/name eq '" +vType+"'";
   } else {
     let qob = context.dataQueryBuilder();
@@ -160,7 +160,7 @@ function ProductList(context) {
     if (productCode != undefined) {
       term1 += productCode + ")";
     }
-    var filterval = "vehicleType_name eq '" + vType + "' and category_ID eq " + context.binding.category.ID + " and subCategory_ID eq " + context.binding.ID + "";
+    var filterval = "vehicleType_name eq '" + vType + "' and category_ID eq " + context.binding.category_ID + " and subCategory_ID eq " + context.binding.ID + "";
     qob.top(100);
     qob.skip(0);
     qob.filter(filterval).and(term1);
@@ -188,15 +188,51 @@ __webpack_require__.r(__webpack_exports__);
 function Query_Search_Defect_Category(context) {
   const searchString = context.searchString;
   if (searchString == undefined || searchString === undefined || searchString.length == 0) {
-    return "$expand=category&$filter=category/name eq '" + context.binding.name + "'";
+    return "$filter=category_name eq '" + context.binding.name + "'";
   } else {
+    // let qob = context.dataQueryBuilder();
+    // qob.expand('category');
+    // var serachval = "contains(tolower(name),'" +searchString.toLowerCase()+"')";
+    // var catval= "category/name eq '" +context.binding.name+"'";
+    // qob.top(100);
+    // qob.skip(0);
+    // qob.filter(serachval).and(catval);
+    // return qob;
+
     let qob = context.dataQueryBuilder();
-    qob.expand('category');
-    var serachval = "contains(tolower(name),'" + searchString.toLowerCase() + "')";
-    var catval = "category/name eq '" + context.binding.name + "'";
+    var subCatName = "contains(tolower(name),'" + searchString.toLowerCase() + "')";
+    var custName = "contains(tolower(customer_name),'" + searchString.toLowerCase() + "')";
+    var productName = "contains(tolower(product_name),'" + searchString.toLowerCase() + "')";
+    var jvName = "contains(tolower(jv),'" + searchString.toLowerCase() + "')";
+    var ProblemDesc = "contains(tolower(problemDescription),'" + searchString.toLowerCase() + "')";
+    var targetSubstrate = "contains(tolower(targetSubstrate),'" + searchString.toLowerCase() + "')";
+    var substrateMaterial = "contains(tolower(substrateMaterial),'" + searchString.toLowerCase() + "')";
+    var term1 = '(' + " ";
+    if (custName != undefined) {
+      term1 += custName + " or ";
+    }
+    if (productName != undefined) {
+      term1 += productName + " or ";
+    }
+    if (subCatName != undefined) {
+      term1 += subCatName + " or ";
+    }
+    if (jvName != undefined) {
+      term1 += jvName + " or ";
+    }
+    if (ProblemDesc != undefined) {
+      term1 += ProblemDesc + " or ";
+    }
+    if (targetSubstrate != undefined) {
+      term1 += targetSubstrate + " or ";
+    }
+    if (substrateMaterial != undefined) {
+      term1 += substrateMaterial + ")";
+    }
+    var filterval = "category_name eq '" + context.binding.name + "'";
     qob.top(100);
     qob.skip(0);
-    qob.filter(serachval).and(catval);
+    qob.filter(filterval).and(term1);
     return qob;
   }
 }
@@ -1331,7 +1367,7 @@ module.exports = {"Controls":[{"_Type":"Control.Type.SectionedTable","_Name":"Se
   \************************************************************************/
 /***/ ((module) => {
 
-module.exports = {"Controls":[{"_Type":"Control.Type.SectionedTable","_Name":"SectionedTable0","Sections":[{"Header":{"_Name":"SectionHeader0","UseTopPadding":true,"Caption":"Defect Sub Category"},"_Type":"Section.Type.ObjectTable","Target":{"Service":"/KNPL_TSS/Services/com_knpl_tss.service","EntitySet":"MstrSubCategories","QueryOptions":"/KNPL_TSS/Rules/Query_Search_Defect_Category.js"},"_Name":"SectionObjectTable0","Visible":true,"EmptySection":{"FooterVisible":false,"Caption":"$(L,'label_no_data_found')"},"ObjectCell":{"ContextMenu":{"Items":[],"PerformFirstActionWithFullSwipe":true},"Title":"{name}","DetailImageIsCircular":false,"PreserveIconStackSpacing":false,"AccessoryType":"none","OnPress":"/KNPL_TSS/Actions/ProductListNavigation.action","Selected":false},"Search":{"Enabled":true,"Placeholder":"$(L,'label_search')"},"DataPaging":{"ShowLoadingIndicator":false,"PageSize":50},"HighlightSelectedItem":false,"Selection":{"ExitOnLastDeselect":true,"LongPressToEnable":"None","Mode":"None"}}],"LoadingIndicator":{"Enabled":true,"Text":""}}],"_Type":"Page","_Name":"ProductDefectSubCategory","Caption":"{name}","ActionBar":{"Items":[{"_Name":"ActionBarItem0","Caption":"","Icon":"sap-icon://filter","Position":"Right","IsIconCircular":false,"Visible":true,"OnPress":"/KNPL_TSS/Actions/ProductDefectSubCategoryFilterNavigation.action"}],"_Name":"ActionBar1"}}
+module.exports = {"Controls":[{"_Type":"Control.Type.SectionedTable","_Name":"SectionedTable0","Sections":[{"Header":{"_Name":"SectionHeader0","AccessoryType":"none","UseTopPadding":true,"Caption":"Defect Sub Category"},"_Type":"Section.Type.ObjectTable","Target":{"Service":"/KNPL_TSS/Services/com_knpl_tss.service","EntitySet":"DefectDetailsListUnderSubCategory","QueryOptions":"/KNPL_TSS/Rules/Query_Search_Defect_Category.js"},"_Name":"SectionObjectTable0","Visible":true,"EmptySection":{"Caption":"$(L,'label_no_data_found')","FooterVisible":false},"ObjectCell":{"ContextMenu":{"Items":[],"PerformFirstActionWithFullSwipe":true},"Title":"{name}","DetailImageIsCircular":false,"PreserveIconStackSpacing":false,"AccessoryType":"none","OnPress":"/KNPL_TSS/Actions/ProductListNavigation.action","Selected":false},"Search":{"Enabled":true,"Placeholder":"$(L,'label_search')"},"DataPaging":{"ShowLoadingIndicator":false,"PageSize":50},"HighlightSelectedItem":false,"Selection":{"ExitOnLastDeselect":true,"LongPressToEnable":"None","Mode":"None"}}],"LoadingIndicator":{"Enabled":true,"Text":""}}],"_Type":"Page","_Name":"ProductDefectSubCategory","Caption":"{name}","ActionBar":{"Items":[{"_Name":"ActionBarItem0","Caption":"","Icon":"sap-icon://filter","Position":"Right","IsIconCircular":false,"Visible":true,"OnPress":"/KNPL_TSS/Actions/ProductDefectSubCategoryFilterNavigation.action"}],"_Name":"ActionBar1"}}
 
 /***/ }),
 
@@ -1651,7 +1687,7 @@ module.exports = {"Value":"1.0.0","_Type":"String"}
   \******************************************************************/
 /***/ ((module) => {
 
-module.exports = {"DestinationName":"KNPL_TSS_Destination","OfflineEnabled":false,"LanguageURLParam":"","OnlineOptions":{},"PathSuffix":"","SourceType":"Mobile","ServiceUrl":""}
+module.exports = {"DestinationName":"KNPL_TSS_Destination","OfflineEnabled":false,"SourceType":"Mobile"}
 
 /***/ }),
 

@@ -158,6 +158,21 @@
                 <NavigationProperty Name="DraftAdministrativeData" Type="DefectService.DraftAdministrativeData" ContainsTarget="true"/>
                 <NavigationProperty Name="SiblingEntity" Type="DefectService.DefectDetails"/>
             </EntityType>
+            <EntityType Name="DefectDetailsListUnderSubCategory">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="120"/>
+                <Property Name="category_ID" Type="Edm.Guid"/>
+                <Property Name="category_name" Type="Edm.String" MaxLength="120"/>
+                <Property Name="product_name" Type="Edm.String" MaxLength="120"/>
+                <Property Name="customer_name" Type="Edm.String" MaxLength="120"/>
+                <Property Name="jv" Type="Edm.String" MaxLength="120"/>
+                <Property Name="substrateMaterial" Type="Edm.String" MaxLength="120"/>
+                <Property Name="targetSubstrate" Type="Edm.String" MaxLength="120"/>
+                <Property Name="problemDescription" Type="Edm.String" MaxLength="1000"/>
+            </EntityType>
             <EntityType Name="DefectDetailVersions">
                 <Key>
                     <PropertyRef Name="ID"/>
@@ -548,6 +563,7 @@
                     <NavigationPropertyBinding Path="versions" Target="DefectDetailVersions"/>
                     <NavigationPropertyBinding Path="SiblingEntity" Target="DefectDetails"/>
                 </EntitySet>
+                <EntitySet Name="DefectDetailsListUnderSubCategory" EntityType="DefectService.DefectDetailsListUnderSubCategory"/>
                 <EntitySet Name="DefectDetailVersions" EntityType="DefectService.DefectDetailVersions">
                     <NavigationPropertyBinding Path="defectDetail" Target="DefectDetails"/>
                     <NavigationPropertyBinding Path="product" Target="Products"/>
@@ -4319,6 +4335,72 @@
                     <Bool>
                         true
                     </Bool>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.DefectDetailsListUnderSubCategory/name">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Sub Category
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.DefectDetailsListUnderSubCategory/category_name">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Category
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.DefectDetailsListUnderSubCategory/product_name">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Product Name
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.DefectDetailsListUnderSubCategory/customer_name">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Main Customer
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.DefectDetailsListUnderSubCategory/jv">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Issued By (JV)
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.DefectDetailsListUnderSubCategory/substrateMaterial">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Substrate Material
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.DefectDetailsListUnderSubCategory/targetSubstrate">
+                <Annotation Term="Common.Label">
+                    <String>
+                        Target Substrate
+                    </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="DefectService.DefectDetailsListUnderSubCategory/problemDescription">
+                <Annotation Term="UI.MultiLineText">
+                    <Bool>
+                        true
+                    </Bool>
+                </Annotation>
+                <Annotation Term="Common.FieldControl">
+                    <EnumMember>
+                        Common.FieldControlType/Mandatory
+                    </EnumMember>
+                </Annotation>
+                <Annotation Term="Common.Label">
+                    <String>
+                        Problem Description
+                    </String>
                 </Annotation>
             </Annotations>
             <Annotations Target="DefectService.DefectDetailVersions">

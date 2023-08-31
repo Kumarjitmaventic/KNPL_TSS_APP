@@ -12,7 +12,7 @@ export default function ProductList(context) {
         //return "$expand=defectDetails($expand=mainCustomer),vehicleType($filter=name eq '" +vType+"'),subCategory($filter=name eq '" +context.binding.name+"')";
         //new chnages
         //return "$filter=vehicleType/name eq '" +vType+"' and subCategory/ID eq '" +context.binding.ID+"'&$expand=vehicleType,subCategory,product,mainCustomer";
-        return "$filter=vehicleType_name eq '" +vType+"' and category_ID eq " +context.binding.category.ID+" and subCategory_ID eq " +context.binding.ID+"";
+        return "$filter=vehicleType_name eq '" +vType+"' and category_ID eq " +context.binding.category_ID+" and subCategory_ID eq " +context.binding.ID+"";
         //return "$expand=category&$filter=category/name eq '" +vType+"'";
     }
     else{
@@ -51,7 +51,7 @@ export default function ProductList(context) {
        if(productCode !=undefined){
         term1 += productCode + ")";
        }
-        var filterval= "vehicleType_name eq '" +vType+"' and category_ID eq " +context.binding.category.ID+" and subCategory_ID eq " +context.binding.ID+"";
+        var filterval="vehicleType_name eq '" +vType+"' and category_ID eq " +context.binding.category_ID+" and subCategory_ID eq " +context.binding.ID+"";
         qob.top(100);
         qob.skip(0);
         qob.filter(filterval).and(term1);

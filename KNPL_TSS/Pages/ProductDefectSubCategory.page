@@ -7,25 +7,25 @@
 				{
 					"Header": {
 						"_Name": "SectionHeader0",
+						"AccessoryType": "none",
 						"UseTopPadding": true,
 						"Caption": "Defect Sub Category"
 					},
 					"_Type": "Section.Type.ObjectTable",
 					"Target": {
 						"Service": "/KNPL_TSS/Services/com_knpl_tss.service",
-						"EntitySet": "MstrSubCategories",
-                        "QueryOptions": "/KNPL_TSS/Rules/Query_Search_Defect_Category.js"
+						"EntitySet": "DefectDetailsListUnderSubCategory",
+						"QueryOptions": "/KNPL_TSS/Rules/Query_Search_Defect_Category.js"
 					},
 					"_Name": "SectionObjectTable0",
 					"Visible": true,
 					"EmptySection": {
-						"FooterVisible": false,
-                        "Caption": "$(L,'label_no_data_found')"
+						"Caption": "$(L,'label_no_data_found')",
+						"FooterVisible": false
 					},
 					"ObjectCell": {
 						"ContextMenu": {
-							"Items": [
-							],
+							"Items": [],
 							"PerformFirstActionWithFullSwipe": true
 						},
 						"Title": "{name}",
@@ -37,7 +37,7 @@
 					},
 					"Search": {
 						"Enabled": true,
-                        "Placeholder": "$(L,'label_search')"
+						"Placeholder": "$(L,'label_search')"
 					},
 					"DataPaging": {
 						"ShowLoadingIndicator": false,
@@ -60,7 +60,7 @@
 	"_Type": "Page",
 	"_Name": "ProductDefectSubCategory",
 	"Caption": "{name}",
-     "ActionBar": {
+	"ActionBar": {
 		"Items": [
 			{
 				"_Name": "ActionBarItem0",
