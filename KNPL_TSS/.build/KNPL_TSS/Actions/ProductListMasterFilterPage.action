@@ -1,6 +1,0 @@
-{
-	"_Type": "Action.Type.Filter",
-	"Filterable": "#Page:ProductDefectTypes/#Control:SectionedTable0",
-	"PageToOpen": "/KNPL_TSS/Pages/ProductListMasterFilter.page",
-	"ModalPageFullscreen": false
-}
