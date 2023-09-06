@@ -9,6 +9,7 @@
 					"_Name": "SectionSimplePropertyCollection0",
 					"Header": {
 						"_Name": "SectionHeader1",
+						"AccessoryType": "none",
 						"UseTopPadding": true,
 						"Caption": "Vehicle Type"
 					},
@@ -17,7 +18,7 @@
 						"FooterVisible": false
 					},
 					"SimplePropertyCells": [
-                        {
+						{
 							"SimplePropertyCell": {
 								"Styles": {
 									"Value": "homeval"
@@ -30,7 +31,7 @@
 								"OnPress": "/KNPL_TSS/Rules/VehicleType_FourWheel.js"
 							}
 						},
-                        {
+						{
 							"SimplePropertyCell": {
 								"Styles": {
 									"Value": "homeval"
@@ -40,7 +41,7 @@
 								"KeyName": "2 Wheeler",
 								"AccessoryType": "none",
 								"Visible": true,
-									"OnPress": "/KNPL_TSS/Rules/VehicleType_TwoWheel.js"
+								"OnPress": "/KNPL_TSS/Rules/VehicleType_TwoWheel.js"
 							}
 						}
 					],
@@ -54,6 +55,7 @@
 	"_Type": "Page",
 	"_Name": "Main",
 	"Caption": "Home",
+	"OnLoaded": "/KNPL_TSS/Actions/RESTUpdateUserLog.action",
 	"ActionBar": {
 		"Items": [
 			{

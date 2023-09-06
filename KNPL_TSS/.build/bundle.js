@@ -51,6 +51,28 @@ function DataResponse(context) {
 
 /***/ }),
 
+/***/ "./build.definitions/KNPL_TSS/Rules/GetLogEntitySet.js":
+/*!*************************************************************!*\
+  !*** ./build.definitions/KNPL_TSS/Rules/GetLogEntitySet.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ GetLogEntitySet)
+/* harmony export */ });
+/**
+ * Describe this function...
+ * @param {IClientAPI} clientAPI
+ */
+function GetLogEntitySet(clientAPI) {
+  let userId = clientAPI.evaluateTargetPath('#Application/#ClientData/UserId');
+  return "/UserLoginData('" + userId + "')";
+}
+
+/***/ }),
+
 /***/ "./build.definitions/KNPL_TSS/Rules/OnWillUpdate.js":
 /*!**********************************************************!*\
   !*** ./build.definitions/KNPL_TSS/Rules/OnWillUpdate.js ***!
@@ -1287,7 +1309,7 @@ module.exports = {"Controls":[{"_Type":"Control.Type.FormCellContainer","_Name":
   \****************************************************/
 /***/ ((module) => {
 
-module.exports = {"Controls":[{"_Type":"Control.Type.SectionedTable","_Name":"SectionedTable0","Sections":[{"_Type":"Section.Type.SimplePropertyCollection","_Name":"SectionSimplePropertyCollection0","Header":{"_Name":"SectionHeader1","UseTopPadding":true,"Caption":"Vehicle Type"},"Visible":true,"EmptySection":{"FooterVisible":false},"SimplePropertyCells":[{"SimplePropertyCell":{"Styles":{"Value":"homeval"},"Value":">","_Name":"SectionSimplePropertyCell4","KeyName":"4 Wheeler","AccessoryType":"none","Visible":true,"OnPress":"/KNPL_TSS/Rules/VehicleType_FourWheel.js"}},{"SimplePropertyCell":{"Styles":{"Value":"homeval"},"Value":">","_Name":"SectionSimplePropertyCell5","KeyName":"2 Wheeler","AccessoryType":"none","Visible":true,"OnPress":"/KNPL_TSS/Rules/VehicleType_TwoWheel.js"}}],"Layout":{"NumberOfColumns":1}}]}],"_Type":"Page","_Name":"Main","Caption":"Home","ActionBar":{"Items":[{"_Name":"ActionBarItem0","Caption":"Item","Icon":"sap-icon://customer","Position":"Right","IsIconCircular":false,"Visible":true,"OnPress":"/KNPL_TSS/Actions/User_Profile.action"}],"_Name":"ActionBar1"}}
+module.exports = {"Controls":[{"_Type":"Control.Type.SectionedTable","_Name":"SectionedTable0","Sections":[{"_Type":"Section.Type.SimplePropertyCollection","_Name":"SectionSimplePropertyCollection0","Header":{"_Name":"SectionHeader1","AccessoryType":"none","UseTopPadding":true,"Caption":"Vehicle Type"},"Visible":true,"EmptySection":{"FooterVisible":false},"SimplePropertyCells":[{"SimplePropertyCell":{"Styles":{"Value":"homeval"},"Value":">","_Name":"SectionSimplePropertyCell4","KeyName":"4 Wheeler","AccessoryType":"none","Visible":true,"OnPress":"/KNPL_TSS/Rules/VehicleType_FourWheel.js"}},{"SimplePropertyCell":{"Styles":{"Value":"homeval"},"Value":">","_Name":"SectionSimplePropertyCell5","KeyName":"2 Wheeler","AccessoryType":"none","Visible":true,"OnPress":"/KNPL_TSS/Rules/VehicleType_TwoWheel.js"}}],"Layout":{"NumberOfColumns":1}}]}],"_Type":"Page","_Name":"Main","Caption":"Home","OnLoaded":"/KNPL_TSS/Actions/RESTUpdateUserLog.action","ActionBar":{"Items":[{"_Name":"ActionBarItem0","Caption":"Item","Icon":"sap-icon://customer","Position":"Right","IsIconCircular":false,"Visible":true,"OnPress":"/KNPL_TSS/Actions/User_Profile.action"}],"_Name":"ActionBar1"}}
 
 /***/ }),
 
@@ -1611,6 +1633,16 @@ module.exports = {"_Type":"Action.Type.Navigation","PageToOpen":"/KNPL_TSS/Pages
 
 /***/ }),
 
+/***/ "./build.definitions/KNPL_TSS/Actions/RESTUpdateUserLog.action":
+/*!*********************************************************************!*\
+  !*** ./build.definitions/KNPL_TSS/Actions/RESTUpdateUserLog.action ***!
+  \*********************************************************************/
+/***/ ((module) => {
+
+module.exports = {"_Type":"Action.Type.RestService.SendRequest","ActionResult":{"_Name":"RESTUpdateUserLog"},"OnFailure":"/KNPL_TSS/Actions/UpdateUserLogFaildMessage.action","OnInvalidLog":{"Message":"","Level":"Off"},"Target":{"Service":"/KNPL_TSS/Services/com_knpl_tss_User.service","Path":"/KNPL_TSS/Rules/GetLogEntitySet.js","RequestProperties":{"Method":"PUT","Body":{"appVersion":"/KNPL_TSS/Globals/AppDefinition_Version.global"}}}}
+
+/***/ }),
+
 /***/ "./build.definitions/KNPL_TSS/Actions/Service/InitializeOnline.action":
 /*!****************************************************************************!*\
   !*** ./build.definitions/KNPL_TSS/Actions/Service/InitializeOnline.action ***!
@@ -1661,6 +1693,16 @@ module.exports = {"Animated":true,"Duration":2,"Message":"Entity updated","Icon"
 
 /***/ }),
 
+/***/ "./build.definitions/KNPL_TSS/Actions/UpdateUserLogFaildMessage.action":
+/*!*****************************************************************************!*\
+  !*** ./build.definitions/KNPL_TSS/Actions/UpdateUserLogFaildMessage.action ***!
+  \*****************************************************************************/
+/***/ ((module) => {
+
+module.exports = {"_Type":"Action.Type.ToastMessage","ActionResult":{"_Name":"UpdateUserLogFaildMessage"},"Message":"#ActionResults:RESTUpdateUserLog/error","NumberOfLines":3,"Duration":3,"Icon":"sap-icon://message-error"}
+
+/***/ }),
+
 /***/ "./build.definitions/KNPL_TSS/Actions/User_Profile.action":
 /*!****************************************************************!*\
   !*** ./build.definitions/KNPL_TSS/Actions/User_Profile.action ***!
@@ -1697,7 +1739,7 @@ module.exports = {"DestinationName":"KNPL_TSS_Destination","OfflineEnabled":fals
   \***********************************************************************/
 /***/ ((module) => {
 
-module.exports = {"DestinationName":"KNPL_TSS_UserService","OfflineEnabled":false,"LanguageURLParam":"","OnlineOptions":{},"PathSuffix":"","SourceType":"Mobile","ServiceUrl":""}
+module.exports = {"DestinationName":"KNPL_TSS_UserService","OfflineEnabled":false,"SourceType":"Mobile","RestService":true}
 
 /***/ }),
 
@@ -1724,11 +1766,13 @@ let knpl_tss_actions_productlistfilternav_action = __webpack_require__(/*! ./KNP
 let knpl_tss_actions_productlistfilternavigation_action = __webpack_require__(/*! ./KNPL_TSS/Actions/ProductListFilterNavigation.action */ "./build.definitions/KNPL_TSS/Actions/ProductListFilterNavigation.action")
 let knpl_tss_actions_productlistmasterfilterpage_action = __webpack_require__(/*! ./KNPL_TSS/Actions/ProductListMasterFilterPage.action */ "./build.definitions/KNPL_TSS/Actions/ProductListMasterFilterPage.action")
 let knpl_tss_actions_productlistnavigation_action = __webpack_require__(/*! ./KNPL_TSS/Actions/ProductListNavigation.action */ "./build.definitions/KNPL_TSS/Actions/ProductListNavigation.action")
+let knpl_tss_actions_restupdateuserlog_action = __webpack_require__(/*! ./KNPL_TSS/Actions/RESTUpdateUserLog.action */ "./build.definitions/KNPL_TSS/Actions/RESTUpdateUserLog.action")
 let knpl_tss_actions_service_initializeonline_action = __webpack_require__(/*! ./KNPL_TSS/Actions/Service/InitializeOnline.action */ "./build.definitions/KNPL_TSS/Actions/Service/InitializeOnline.action")
 let knpl_tss_actions_service_initializeonlinefailuremessage_action = __webpack_require__(/*! ./KNPL_TSS/Actions/Service/InitializeOnlineFailureMessage.action */ "./build.definitions/KNPL_TSS/Actions/Service/InitializeOnlineFailureMessage.action")
 let knpl_tss_actions_service_initializeonlinesuccessmessage_action = __webpack_require__(/*! ./KNPL_TSS/Actions/Service/InitializeOnlineSuccessMessage.action */ "./build.definitions/KNPL_TSS/Actions/Service/InitializeOnlineSuccessMessage.action")
 let knpl_tss_actions_service_initializeonlineuser_action = __webpack_require__(/*! ./KNPL_TSS/Actions/Service/InitializeOnlineUser.action */ "./build.definitions/KNPL_TSS/Actions/Service/InitializeOnlineUser.action")
 let knpl_tss_actions_updateentitysuccessmessage_action = __webpack_require__(/*! ./KNPL_TSS/Actions/UpdateEntitySuccessMessage.action */ "./build.definitions/KNPL_TSS/Actions/UpdateEntitySuccessMessage.action")
+let knpl_tss_actions_updateuserlogfaildmessage_action = __webpack_require__(/*! ./KNPL_TSS/Actions/UpdateUserLogFaildMessage.action */ "./build.definitions/KNPL_TSS/Actions/UpdateUserLogFaildMessage.action")
 let knpl_tss_actions_user_profile_action = __webpack_require__(/*! ./KNPL_TSS/Actions/User_Profile.action */ "./build.definitions/KNPL_TSS/Actions/User_Profile.action")
 let knpl_tss_globals_appdefinition_version_global = __webpack_require__(/*! ./KNPL_TSS/Globals/AppDefinition_Version.global */ "./build.definitions/KNPL_TSS/Globals/AppDefinition_Version.global")
 let knpl_tss_i18n_i18n_properties = __webpack_require__(/*! ./KNPL_TSS/i18n/i18n.properties */ "./build.definitions/KNPL_TSS/i18n/i18n.properties")
@@ -1752,6 +1796,7 @@ let knpl_tss_pages_twowheelproductlistfilter_page = __webpack_require__(/*! ./KN
 let knpl_tss_pages_user_profile_page = __webpack_require__(/*! ./KNPL_TSS/Pages/User_Profile.page */ "./build.definitions/KNPL_TSS/Pages/User_Profile.page")
 let knpl_tss_rules_customername_js = __webpack_require__(/*! ./KNPL_TSS/Rules/customerName.js */ "./build.definitions/KNPL_TSS/Rules/customerName.js")
 let knpl_tss_rules_dataresponse_js = __webpack_require__(/*! ./KNPL_TSS/Rules/DataResponse.js */ "./build.definitions/KNPL_TSS/Rules/DataResponse.js")
+let knpl_tss_rules_getlogentityset_js = __webpack_require__(/*! ./KNPL_TSS/Rules/GetLogEntitySet.js */ "./build.definitions/KNPL_TSS/Rules/GetLogEntitySet.js")
 let knpl_tss_rules_onwillupdate_js = __webpack_require__(/*! ./KNPL_TSS/Rules/OnWillUpdate.js */ "./build.definitions/KNPL_TSS/Rules/OnWillUpdate.js")
 let knpl_tss_rules_productinfo_js = __webpack_require__(/*! ./KNPL_TSS/Rules/ProductInfo.js */ "./build.definitions/KNPL_TSS/Rules/ProductInfo.js")
 let knpl_tss_rules_productlist_js = __webpack_require__(/*! ./KNPL_TSS/Rules/ProductList.js */ "./build.definitions/KNPL_TSS/Rules/ProductList.js")
@@ -1800,11 +1845,13 @@ module.exports = {
 	knpl_tss_actions_productlistfilternavigation_action : knpl_tss_actions_productlistfilternavigation_action,
 	knpl_tss_actions_productlistmasterfilterpage_action : knpl_tss_actions_productlistmasterfilterpage_action,
 	knpl_tss_actions_productlistnavigation_action : knpl_tss_actions_productlistnavigation_action,
+	knpl_tss_actions_restupdateuserlog_action : knpl_tss_actions_restupdateuserlog_action,
 	knpl_tss_actions_service_initializeonline_action : knpl_tss_actions_service_initializeonline_action,
 	knpl_tss_actions_service_initializeonlinefailuremessage_action : knpl_tss_actions_service_initializeonlinefailuremessage_action,
 	knpl_tss_actions_service_initializeonlinesuccessmessage_action : knpl_tss_actions_service_initializeonlinesuccessmessage_action,
 	knpl_tss_actions_service_initializeonlineuser_action : knpl_tss_actions_service_initializeonlineuser_action,
 	knpl_tss_actions_updateentitysuccessmessage_action : knpl_tss_actions_updateentitysuccessmessage_action,
+	knpl_tss_actions_updateuserlogfaildmessage_action : knpl_tss_actions_updateuserlogfaildmessage_action,
 	knpl_tss_actions_user_profile_action : knpl_tss_actions_user_profile_action,
 	knpl_tss_globals_appdefinition_version_global : knpl_tss_globals_appdefinition_version_global,
 	knpl_tss_i18n_i18n_properties : knpl_tss_i18n_i18n_properties,
@@ -1828,6 +1875,7 @@ module.exports = {
 	knpl_tss_pages_user_profile_page : knpl_tss_pages_user_profile_page,
 	knpl_tss_rules_customername_js : knpl_tss_rules_customername_js,
 	knpl_tss_rules_dataresponse_js : knpl_tss_rules_dataresponse_js,
+	knpl_tss_rules_getlogentityset_js : knpl_tss_rules_getlogentityset_js,
 	knpl_tss_rules_onwillupdate_js : knpl_tss_rules_onwillupdate_js,
 	knpl_tss_rules_productinfo_js : knpl_tss_rules_productinfo_js,
 	knpl_tss_rules_productlist_js : knpl_tss_rules_productlist_js,

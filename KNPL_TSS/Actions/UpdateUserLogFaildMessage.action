@@ -1,0 +1,10 @@
+{
+	"_Type": "Action.Type.ToastMessage",
+	"ActionResult": {
+		"_Name": "UpdateUserLogFaildMessage"
+	},
+	"Message": "#ActionResults:RESTUpdateUserLog/error",
+	"NumberOfLines": 3,
+	"Duration": 3,
+	"Icon": "sap-icon://message-error"
+}
