@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
     <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
         <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
     </edmx:Reference>
@@ -47,17 +50,19 @@
                 <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
                 <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
                 <Property Name="userName" Type="Edm.String" Nullable="false" MaxLength="50"/>
-                <Property Name="name" Type="Edm.String" MaxLength="30"/>
                 <Property Name="totalLogin" Type="Edm.Int32"/>
                 <Property Name="lastLogin" Type="Edm.DateTimeOffset" Precision="7"/>
                 <Property Name="appVersion" Type="Edm.String" MaxLength="10"/>
+                <NavigationProperty Name="User" Type="UserService.Users"/>
             </EntityType>
             <EntityContainer Name="EntityContainer">
                 <EntitySet Name="Users" EntityType="UserService.Users">
                     <NavigationPropertyBinding Path="userType" Target="MstrUserTypes"/>
                 </EntitySet>
                 <EntitySet Name="MstrUserTypes" EntityType="UserService.MstrUserTypes"/>
-                <EntitySet Name="UserLoginData" EntityType="UserService.UserLoginData"/>
+                <EntitySet Name="UserLoginData" EntityType="UserService.UserLoginData">
+                    <NavigationPropertyBinding Path="User" Target="Users"/>
+                </EntitySet>
             </EntityContainer>
             <Annotations Target="UserService.Users">
                 <Annotation Term="UI.HeaderInfo">
@@ -120,6 +125,35 @@
                             </PropertyValue>
                         </Record>
                     </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.EntityContainer/Users">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
                 </Annotation>
             </Annotations>
             <Annotations Target="UserService.Users/createdAt">
@@ -325,6 +359,35 @@
                     <String>
                         Email
                     </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.EntityContainer/MstrUserTypes">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
                 </Annotation>
             </Annotations>
             <Annotations Target="UserService.MstrUserTypes/ID">
