@@ -404,6 +404,33 @@ function Query_Search_Result(context) {
 
 /***/ }),
 
+/***/ "./build.definitions/KNPL_TSS/Rules/RESTuserLoginDataUpdate.js":
+/*!*********************************************************************!*\
+  !*** ./build.definitions/KNPL_TSS/Rules/RESTuserLoginDataUpdate.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ RESTuserLoginDataUpdate)
+/* harmony export */ });
+/**
+ * Describe this function...
+ * @param {IClientAPI} clientAPI
+ */
+function RESTuserLoginDataUpdate(clientAPI) {
+  try {
+    let updateLog = clientAPI.executeAction("/KNPL_TSS/Actions/RESTupdateUserLogReport.action");
+    return clientAPI.executeAction("/KNPL_TSS/Actions/Service/InitializeOnlineSuccessMessage.action");
+  } catch {
+    return clientAPI.executeAction("/KNPL_TSS/Actions/Service/InitializeOnlineFailureMessage.action");
+    ;
+  }
+}
+
+/***/ }),
+
 /***/ "./build.definitions/KNPL_TSS/Rules/Search_Category.js":
 /*!*************************************************************!*\
   !*** ./build.definitions/KNPL_TSS/Rules/Search_Category.js ***!
@@ -1309,7 +1336,7 @@ module.exports = {"Controls":[{"_Type":"Control.Type.FormCellContainer","_Name":
   \****************************************************/
 /***/ ((module) => {
 
-module.exports = {"Controls":[{"_Type":"Control.Type.SectionedTable","_Name":"SectionedTable0","Sections":[{"_Type":"Section.Type.SimplePropertyCollection","_Name":"SectionSimplePropertyCollection0","Header":{"_Name":"SectionHeader1","AccessoryType":"none","UseTopPadding":true,"Caption":"Vehicle Type"},"Visible":true,"EmptySection":{"FooterVisible":false},"SimplePropertyCells":[{"SimplePropertyCell":{"Styles":{"Value":"homeval"},"Value":">","_Name":"SectionSimplePropertyCell4","KeyName":"4 Wheeler","AccessoryType":"none","Visible":true,"OnPress":"/KNPL_TSS/Rules/VehicleType_FourWheel.js"}},{"SimplePropertyCell":{"Styles":{"Value":"homeval"},"Value":">","_Name":"SectionSimplePropertyCell5","KeyName":"2 Wheeler","AccessoryType":"none","Visible":true,"OnPress":"/KNPL_TSS/Rules/VehicleType_TwoWheel.js"}}],"Layout":{"NumberOfColumns":1}}]}],"_Type":"Page","_Name":"Main","Caption":"Home","OnLoaded":"/KNPL_TSS/Actions/RESTUpdateUserLog.action","ActionBar":{"Items":[{"_Name":"ActionBarItem0","Caption":"Item","Icon":"sap-icon://customer","Position":"Right","IsIconCircular":false,"Visible":true,"OnPress":"/KNPL_TSS/Actions/User_Profile.action"}],"_Name":"ActionBar1"}}
+module.exports = {"Controls":[{"_Type":"Control.Type.SectionedTable","_Name":"SectionedTable0","Sections":[{"_Type":"Section.Type.SimplePropertyCollection","_Name":"SectionSimplePropertyCollection0","Header":{"_Name":"SectionHeader1","AccessoryType":"none","UseTopPadding":true,"Caption":"Vehicle Type"},"Visible":true,"EmptySection":{"FooterVisible":false},"SimplePropertyCells":[{"SimplePropertyCell":{"Styles":{"Value":"homeval"},"Value":">","_Name":"SectionSimplePropertyCell4","KeyName":"4 Wheeler","AccessoryType":"none","Visible":true,"OnPress":"/KNPL_TSS/Rules/VehicleType_FourWheel.js"}},{"SimplePropertyCell":{"Styles":{"Value":"homeval"},"Value":">","_Name":"SectionSimplePropertyCell5","KeyName":"2 Wheeler","AccessoryType":"none","Visible":true,"OnPress":"/KNPL_TSS/Rules/VehicleType_TwoWheel.js"}}],"Layout":{"NumberOfColumns":1}}]}],"_Type":"Page","_Name":"Main","Caption":"Home","ActionBar":{"Items":[{"_Name":"ActionBarItem0","Caption":"Item","Icon":"sap-icon://customer","Position":"Right","IsIconCircular":false,"Visible":true,"OnPress":"/KNPL_TSS/Actions/User_Profile.action"}],"_Name":"ActionBar1"}}
 
 /***/ }),
 
@@ -1329,7 +1356,7 @@ module.exports = {"Controls":[{"_Type":"Control.Type.SectionedTable","_Name":"Se
   \*********************************************************************/
 /***/ ((module) => {
 
-module.exports = {"Controls":[{"_Type":"Control.Type.SectionedTable","_Name":"SectionedTable0","Sections":[{"Header":{"_Name":"SectionHeader0","UseTopPadding":true,"Caption":"Defect Category"},"_Type":"Section.Type.ObjectTable","Target":{"Service":"/KNPL_TSS/Services/com_knpl_tss.service","EntitySet":"MstrCategories","QueryOptions":"/KNPL_TSS/Rules/Search_Category.js"},"_Name":"SectionObjectTable0","Visible":true,"EmptySection":{"FooterVisible":false,"Caption":"$(L,'label_no_data_found')"},"ObjectCell":{"ContextMenu":{"Items":[],"PerformFirstActionWithFullSwipe":true},"Title":"{name}","DetailImageIsCircular":false,"PreserveIconStackSpacing":false,"AccessoryType":"none","OnPress":"/KNPL_TSS/Actions/ProductDefectSubCategoryNavigation.action","Selected":false},"Search":{"Enabled":true,"Placeholder":"$(L,'label_search')"},"DataPaging":{"ShowLoadingIndicator":false,"PageSize":50},"HighlightSelectedItem":false,"Selection":{"ExitOnLastDeselect":true,"LongPressToEnable":"None","Mode":"None"}}],"LoadingIndicator":{"Enabled":true,"Text":""}}],"_Type":"Page","_Name":"ProductDefectCategory","Caption":"/KNPL_TSS/Rules/VehicleType.js","ActionBar":{"Items":[{"_Name":"ActionBarItem0","Caption":"","Icon":"sap-icon://filter","Position":"Right","IsIconCircular":false,"Visible":true,"OnPress":"/KNPL_TSS/Actions/ProductDefectCategoryFilterNavigation.action"}],"_Name":"ActionBar1"}}
+module.exports = {"Controls":[{"_Type":"Control.Type.SectionedTable","_Name":"SectionedTable0","Sections":[{"Header":{"_Name":"SectionHeader0","AccessoryType":"none","UseTopPadding":true,"Caption":"Defect Category"},"_Type":"Section.Type.ObjectTable","Target":{"Service":"/KNPL_TSS/Services/com_knpl_tss.service","EntitySet":"MstrCategories","QueryOptions":"/KNPL_TSS/Rules/Search_Category.js"},"_Name":"SectionObjectTable0","Visible":true,"EmptySection":{"Caption":"$(L,'label_no_data_found')","FooterVisible":false},"ObjectCell":{"ContextMenu":{"Items":[],"PerformFirstActionWithFullSwipe":true},"Title":"{name}","DetailImageIsCircular":false,"PreserveIconStackSpacing":false,"AccessoryType":"none","OnPress":"/KNPL_TSS/Actions/ProductDefectSubCategoryNavigation.action","Selected":false},"Search":{"Enabled":true,"Placeholder":"$(L,'label_search')"},"DataPaging":{"ShowLoadingIndicator":false,"PageSize":50},"HighlightSelectedItem":false,"Selection":{"ExitOnLastDeselect":true,"LongPressToEnable":"None","Mode":"None"}}],"LoadingIndicator":{"Enabled":true,"Text":""}}],"_Type":"Page","_Name":"ProductDefectCategory","Caption":"/KNPL_TSS/Rules/VehicleType.js","ActionBar":{"Items":[{"_Name":"ActionBarItem0","Caption":"","Icon":"sap-icon://filter","Position":"Right","IsIconCircular":false,"Visible":true,"OnPress":"/KNPL_TSS/Actions/ProductDefectCategoryFilterNavigation.action"}],"_Name":"ActionBar1"}}
 
 /***/ }),
 
@@ -1533,6 +1560,16 @@ module.exports = {"_Type":"Action.Type.Logout"}
 
 /***/ }),
 
+/***/ "./build.definitions/KNPL_TSS/Actions/MessageUserUpdate.action":
+/*!*********************************************************************!*\
+  !*** ./build.definitions/KNPL_TSS/Actions/MessageUserUpdate.action ***!
+  \*********************************************************************/
+/***/ ((module) => {
+
+module.exports = {"_Type":"Action.Type.Message","ActionResult":{"_Name":"MessageUserUpdate"},"Message":"#ActionResults:RESTupdateUserLogReport/error"}
+
+/***/ }),
+
 /***/ "./build.definitions/KNPL_TSS/Actions/ProductDefectCategoryFilterNavigation.action":
 /*!*****************************************************************************************!*\
   !*** ./build.definitions/KNPL_TSS/Actions/ProductDefectCategoryFilterNavigation.action ***!
@@ -1633,13 +1670,13 @@ module.exports = {"_Type":"Action.Type.Navigation","PageToOpen":"/KNPL_TSS/Pages
 
 /***/ }),
 
-/***/ "./build.definitions/KNPL_TSS/Actions/RESTUpdateUserLog.action":
-/*!*********************************************************************!*\
-  !*** ./build.definitions/KNPL_TSS/Actions/RESTUpdateUserLog.action ***!
-  \*********************************************************************/
+/***/ "./build.definitions/KNPL_TSS/Actions/RESTupdateUserLogReport.action":
+/*!***************************************************************************!*\
+  !*** ./build.definitions/KNPL_TSS/Actions/RESTupdateUserLogReport.action ***!
+  \***************************************************************************/
 /***/ ((module) => {
 
-module.exports = {"_Type":"Action.Type.RestService.SendRequest","ActionResult":{"_Name":"RESTUpdateUserLog"},"OnFailure":"/KNPL_TSS/Actions/UpdateUserLogFaildMessage.action","OnInvalidLog":{"Message":"","Level":"Off"},"Target":{"Service":"/KNPL_TSS/Services/com_knpl_tss_User.service","Path":"/KNPL_TSS/Rules/GetLogEntitySet.js","RequestProperties":{"Method":"PUT","Body":{"appVersion":"/KNPL_TSS/Globals/AppDefinition_Version.global"}}}}
+module.exports = {"_Type":"Action.Type.RestService.SendRequest","ActionResult":{"_Name":"RESTupdateUserLogReport"},"OnFailure":"/KNPL_TSS/Actions/UpdateUserLogDateFailureMessage.action","Target":{"Service":"/KNPL_TSS/Services/com_knpl_tss_User.service","Path":"/KNPL_TSS/Rules/GetLogEntitySet.js","RequestProperties":{"Method":"PUT","Body":{"appVersion":"/KNPL_TSS/Globals/AppDefinition_Version.global"}}}}
 
 /***/ }),
 
@@ -1679,7 +1716,7 @@ module.exports = {"Animated":true,"Duration":2,"Message":"Application data servi
   \********************************************************************************/
 /***/ ((module) => {
 
-module.exports = {"Service":"/KNPL_TSS/Services/com_knpl_tss_User.service","_Type":"Action.Type.ODataService.Initialize","ShowActivityIndicator":true,"OnSuccess":"/KNPL_TSS/Actions/Service/InitializeOnlineSuccessMessage.action","OnFailure":"/KNPL_TSS/Actions/Service/InitializeOnlineFailureMessage.action","ActionResult":{"_Name":"init"}}
+module.exports = {"_Type":"Action.Type.ODataService.Initialize","ActionResult":{"_Name":"init"},"OnFailure":"/KNPL_TSS/Actions/Service/InitializeOnlineFailureMessage.action","OnSuccess":"/KNPL_TSS/Rules/RESTuserLoginDataUpdate.js","ShowActivityIndicator":true,"Service":"/KNPL_TSS/Services/com_knpl_tss_User.service"}
 
 /***/ }),
 
@@ -1693,13 +1730,13 @@ module.exports = {"Animated":true,"Duration":2,"Message":"Entity updated","Icon"
 
 /***/ }),
 
-/***/ "./build.definitions/KNPL_TSS/Actions/UpdateUserLogFaildMessage.action":
-/*!*****************************************************************************!*\
-  !*** ./build.definitions/KNPL_TSS/Actions/UpdateUserLogFaildMessage.action ***!
-  \*****************************************************************************/
+/***/ "./build.definitions/KNPL_TSS/Actions/UpdateUserLogDateFailureMessage.action":
+/*!***********************************************************************************!*\
+  !*** ./build.definitions/KNPL_TSS/Actions/UpdateUserLogDateFailureMessage.action ***!
+  \***********************************************************************************/
 /***/ ((module) => {
 
-module.exports = {"_Type":"Action.Type.ToastMessage","ActionResult":{"_Name":"UpdateUserLogFaildMessage"},"Message":"#ActionResults:RESTUpdateUserLog/error","NumberOfLines":3,"Duration":3,"Icon":"sap-icon://message-error"}
+module.exports = {"_Type":"Action.Type.Message","ActionResult":{"_Name":"UpdateUserLogDateFailureMessage"},"Message":"#ActionResults:RESTupdateUserLogReport/error","OKCaption":"OK"}
 
 /***/ }),
 
@@ -1719,7 +1756,7 @@ module.exports = {"_Type":"Action.Type.Navigation","PageToOpen":"/KNPL_TSS/Pages
   \*************************************************************************/
 /***/ ((module) => {
 
-module.exports = {"Value":"1.0.0","_Type":"String"}
+module.exports = {"_Type":"String","Value":"1.1.0"}
 
 /***/ }),
 
@@ -1756,6 +1793,7 @@ let knpl_tss_actions_closepage_action = __webpack_require__(/*! ./KNPL_TSS/Actio
 let knpl_tss_actions_createentitysuccessmessage_action = __webpack_require__(/*! ./KNPL_TSS/Actions/CreateEntitySuccessMessage.action */ "./build.definitions/KNPL_TSS/Actions/CreateEntitySuccessMessage.action")
 let knpl_tss_actions_deleteentitysuccessmessage_action = __webpack_require__(/*! ./KNPL_TSS/Actions/DeleteEntitySuccessMessage.action */ "./build.definitions/KNPL_TSS/Actions/DeleteEntitySuccessMessage.action")
 let knpl_tss_actions_logout_action = __webpack_require__(/*! ./KNPL_TSS/Actions/Logout.action */ "./build.definitions/KNPL_TSS/Actions/Logout.action")
+let knpl_tss_actions_messageuserupdate_action = __webpack_require__(/*! ./KNPL_TSS/Actions/MessageUserUpdate.action */ "./build.definitions/KNPL_TSS/Actions/MessageUserUpdate.action")
 let knpl_tss_actions_productdefectcategoryfilternavigation_action = __webpack_require__(/*! ./KNPL_TSS/Actions/ProductDefectCategoryFilterNavigation.action */ "./build.definitions/KNPL_TSS/Actions/ProductDefectCategoryFilterNavigation.action")
 let knpl_tss_actions_productdefectcategorynavigation_action = __webpack_require__(/*! ./KNPL_TSS/Actions/ProductDefectCategoryNavigation.action */ "./build.definitions/KNPL_TSS/Actions/ProductDefectCategoryNavigation.action")
 let knpl_tss_actions_productdefectdetails_nav_action = __webpack_require__(/*! ./KNPL_TSS/Actions/ProductDefectDetails_Nav.action */ "./build.definitions/KNPL_TSS/Actions/ProductDefectDetails_Nav.action")
@@ -1766,13 +1804,13 @@ let knpl_tss_actions_productlistfilternav_action = __webpack_require__(/*! ./KNP
 let knpl_tss_actions_productlistfilternavigation_action = __webpack_require__(/*! ./KNPL_TSS/Actions/ProductListFilterNavigation.action */ "./build.definitions/KNPL_TSS/Actions/ProductListFilterNavigation.action")
 let knpl_tss_actions_productlistmasterfilterpage_action = __webpack_require__(/*! ./KNPL_TSS/Actions/ProductListMasterFilterPage.action */ "./build.definitions/KNPL_TSS/Actions/ProductListMasterFilterPage.action")
 let knpl_tss_actions_productlistnavigation_action = __webpack_require__(/*! ./KNPL_TSS/Actions/ProductListNavigation.action */ "./build.definitions/KNPL_TSS/Actions/ProductListNavigation.action")
-let knpl_tss_actions_restupdateuserlog_action = __webpack_require__(/*! ./KNPL_TSS/Actions/RESTUpdateUserLog.action */ "./build.definitions/KNPL_TSS/Actions/RESTUpdateUserLog.action")
+let knpl_tss_actions_restupdateuserlogreport_action = __webpack_require__(/*! ./KNPL_TSS/Actions/RESTupdateUserLogReport.action */ "./build.definitions/KNPL_TSS/Actions/RESTupdateUserLogReport.action")
 let knpl_tss_actions_service_initializeonline_action = __webpack_require__(/*! ./KNPL_TSS/Actions/Service/InitializeOnline.action */ "./build.definitions/KNPL_TSS/Actions/Service/InitializeOnline.action")
 let knpl_tss_actions_service_initializeonlinefailuremessage_action = __webpack_require__(/*! ./KNPL_TSS/Actions/Service/InitializeOnlineFailureMessage.action */ "./build.definitions/KNPL_TSS/Actions/Service/InitializeOnlineFailureMessage.action")
 let knpl_tss_actions_service_initializeonlinesuccessmessage_action = __webpack_require__(/*! ./KNPL_TSS/Actions/Service/InitializeOnlineSuccessMessage.action */ "./build.definitions/KNPL_TSS/Actions/Service/InitializeOnlineSuccessMessage.action")
 let knpl_tss_actions_service_initializeonlineuser_action = __webpack_require__(/*! ./KNPL_TSS/Actions/Service/InitializeOnlineUser.action */ "./build.definitions/KNPL_TSS/Actions/Service/InitializeOnlineUser.action")
 let knpl_tss_actions_updateentitysuccessmessage_action = __webpack_require__(/*! ./KNPL_TSS/Actions/UpdateEntitySuccessMessage.action */ "./build.definitions/KNPL_TSS/Actions/UpdateEntitySuccessMessage.action")
-let knpl_tss_actions_updateuserlogfaildmessage_action = __webpack_require__(/*! ./KNPL_TSS/Actions/UpdateUserLogFaildMessage.action */ "./build.definitions/KNPL_TSS/Actions/UpdateUserLogFaildMessage.action")
+let knpl_tss_actions_updateuserlogdatefailuremessage_action = __webpack_require__(/*! ./KNPL_TSS/Actions/UpdateUserLogDateFailureMessage.action */ "./build.definitions/KNPL_TSS/Actions/UpdateUserLogDateFailureMessage.action")
 let knpl_tss_actions_user_profile_action = __webpack_require__(/*! ./KNPL_TSS/Actions/User_Profile.action */ "./build.definitions/KNPL_TSS/Actions/User_Profile.action")
 let knpl_tss_globals_appdefinition_version_global = __webpack_require__(/*! ./KNPL_TSS/Globals/AppDefinition_Version.global */ "./build.definitions/KNPL_TSS/Globals/AppDefinition_Version.global")
 let knpl_tss_i18n_i18n_properties = __webpack_require__(/*! ./KNPL_TSS/i18n/i18n.properties */ "./build.definitions/KNPL_TSS/i18n/i18n.properties")
@@ -1802,6 +1840,7 @@ let knpl_tss_rules_productinfo_js = __webpack_require__(/*! ./KNPL_TSS/Rules/Pro
 let knpl_tss_rules_productlist_js = __webpack_require__(/*! ./KNPL_TSS/Rules/ProductList.js */ "./build.definitions/KNPL_TSS/Rules/ProductList.js")
 let knpl_tss_rules_query_search_defect_category_js = __webpack_require__(/*! ./KNPL_TSS/Rules/Query_Search_Defect_Category.js */ "./build.definitions/KNPL_TSS/Rules/Query_Search_Defect_Category.js")
 let knpl_tss_rules_query_search_result_js = __webpack_require__(/*! ./KNPL_TSS/Rules/Query_Search_Result.js */ "./build.definitions/KNPL_TSS/Rules/Query_Search_Result.js")
+let knpl_tss_rules_restuserlogindataupdate_js = __webpack_require__(/*! ./KNPL_TSS/Rules/RESTuserLoginDataUpdate.js */ "./build.definitions/KNPL_TSS/Rules/RESTuserLoginDataUpdate.js")
 let knpl_tss_rules_search_category_js = __webpack_require__(/*! ./KNPL_TSS/Rules/Search_Category.js */ "./build.definitions/KNPL_TSS/Rules/Search_Category.js")
 let knpl_tss_rules_search_sub_category__js = __webpack_require__(/*! ./KNPL_TSS/Rules/Search_Sub_Category_.js */ "./build.definitions/KNPL_TSS/Rules/Search_Sub_Category_.js")
 let knpl_tss_rules_uniquecustomername_js = __webpack_require__(/*! ./KNPL_TSS/Rules/UniquecustomerName.js */ "./build.definitions/KNPL_TSS/Rules/UniquecustomerName.js")
@@ -1835,6 +1874,7 @@ module.exports = {
 	knpl_tss_actions_createentitysuccessmessage_action : knpl_tss_actions_createentitysuccessmessage_action,
 	knpl_tss_actions_deleteentitysuccessmessage_action : knpl_tss_actions_deleteentitysuccessmessage_action,
 	knpl_tss_actions_logout_action : knpl_tss_actions_logout_action,
+	knpl_tss_actions_messageuserupdate_action : knpl_tss_actions_messageuserupdate_action,
 	knpl_tss_actions_productdefectcategoryfilternavigation_action : knpl_tss_actions_productdefectcategoryfilternavigation_action,
 	knpl_tss_actions_productdefectcategorynavigation_action : knpl_tss_actions_productdefectcategorynavigation_action,
 	knpl_tss_actions_productdefectdetails_nav_action : knpl_tss_actions_productdefectdetails_nav_action,
@@ -1845,13 +1885,13 @@ module.exports = {
 	knpl_tss_actions_productlistfilternavigation_action : knpl_tss_actions_productlistfilternavigation_action,
 	knpl_tss_actions_productlistmasterfilterpage_action : knpl_tss_actions_productlistmasterfilterpage_action,
 	knpl_tss_actions_productlistnavigation_action : knpl_tss_actions_productlistnavigation_action,
-	knpl_tss_actions_restupdateuserlog_action : knpl_tss_actions_restupdateuserlog_action,
+	knpl_tss_actions_restupdateuserlogreport_action : knpl_tss_actions_restupdateuserlogreport_action,
 	knpl_tss_actions_service_initializeonline_action : knpl_tss_actions_service_initializeonline_action,
 	knpl_tss_actions_service_initializeonlinefailuremessage_action : knpl_tss_actions_service_initializeonlinefailuremessage_action,
 	knpl_tss_actions_service_initializeonlinesuccessmessage_action : knpl_tss_actions_service_initializeonlinesuccessmessage_action,
 	knpl_tss_actions_service_initializeonlineuser_action : knpl_tss_actions_service_initializeonlineuser_action,
 	knpl_tss_actions_updateentitysuccessmessage_action : knpl_tss_actions_updateentitysuccessmessage_action,
-	knpl_tss_actions_updateuserlogfaildmessage_action : knpl_tss_actions_updateuserlogfaildmessage_action,
+	knpl_tss_actions_updateuserlogdatefailuremessage_action : knpl_tss_actions_updateuserlogdatefailuremessage_action,
 	knpl_tss_actions_user_profile_action : knpl_tss_actions_user_profile_action,
 	knpl_tss_globals_appdefinition_version_global : knpl_tss_globals_appdefinition_version_global,
 	knpl_tss_i18n_i18n_properties : knpl_tss_i18n_i18n_properties,
@@ -1881,6 +1921,7 @@ module.exports = {
 	knpl_tss_rules_productlist_js : knpl_tss_rules_productlist_js,
 	knpl_tss_rules_query_search_defect_category_js : knpl_tss_rules_query_search_defect_category_js,
 	knpl_tss_rules_query_search_result_js : knpl_tss_rules_query_search_result_js,
+	knpl_tss_rules_restuserlogindataupdate_js : knpl_tss_rules_restuserlogindataupdate_js,
 	knpl_tss_rules_search_category_js : knpl_tss_rules_search_category_js,
 	knpl_tss_rules_search_sub_category__js : knpl_tss_rules_search_sub_category__js,
 	knpl_tss_rules_uniquecustomername_js : knpl_tss_rules_uniquecustomername_js,

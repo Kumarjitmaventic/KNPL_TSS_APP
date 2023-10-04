@@ -1,13 +1,9 @@
 {
 	"_Type": "Action.Type.RestService.SendRequest",
 	"ActionResult": {
-		"_Name": "RESTUpdateUserLog"
+		"_Name": "RESTupdateUserLogReport"
 	},
-	"OnFailure": "/KNPL_TSS/Actions/UpdateUserLogFaildMessage.action",
-	"OnInvalidLog": {
-		"Message": "",
-		"Level": "Off"
-	},
+	"OnFailure": "/KNPL_TSS/Actions/UpdateUserLogDateFailureMessage.action",
 	"Target": {
 		"Service": "/KNPL_TSS/Services/com_knpl_tss_User.service",
 		"Path": "/KNPL_TSS/Rules/GetLogEntitySet.js",

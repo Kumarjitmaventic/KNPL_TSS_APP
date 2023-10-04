@@ -1,10 +1,10 @@
 {
-    "Service": "/KNPL_TSS/Services/com_knpl_tss_User.service",
-    "_Type": "Action.Type.ODataService.Initialize",
-    "ShowActivityIndicator": true,
-    "OnSuccess": "/KNPL_TSS/Actions/Service/InitializeOnlineSuccessMessage.action",
-    "OnFailure": "/KNPL_TSS/Actions/Service/InitializeOnlineFailureMessage.action",
-    "ActionResult": {
-        "_Name": "init"
-    }
+	"_Type": "Action.Type.ODataService.Initialize",
+	"ActionResult": {
+		"_Name": "init"
+	},
+	"OnFailure": "/KNPL_TSS/Actions/Service/InitializeOnlineFailureMessage.action",
+	"OnSuccess": "/KNPL_TSS/Rules/RESTuserLoginDataUpdate.js",
+	"ShowActivityIndicator": true,
+	"Service": "/KNPL_TSS/Services/com_knpl_tss_User.service"
 }

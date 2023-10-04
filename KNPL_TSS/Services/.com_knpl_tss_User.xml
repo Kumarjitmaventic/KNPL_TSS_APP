@@ -55,6 +55,12 @@
                 <Property Name="appVersion" Type="Edm.String" MaxLength="10"/>
                 <NavigationProperty Name="User" Type="UserService.Users"/>
             </EntityType>
+            <EntityType Name="GetAppVersion">
+                <Key>
+                    <PropertyRef Name="appVersion"/>
+                </Key>
+                <Property Name="appVersion" Type="Edm.String" Nullable="false" MaxLength="10"/>
+            </EntityType>
             <EntityContainer Name="EntityContainer">
                 <EntitySet Name="Users" EntityType="UserService.Users">
                     <NavigationPropertyBinding Path="userType" Target="MstrUserTypes"/>
@@ -63,6 +69,7 @@
                 <EntitySet Name="UserLoginData" EntityType="UserService.UserLoginData">
                     <NavigationPropertyBinding Path="User" Target="Users"/>
                 </EntitySet>
+                <EntitySet Name="GetAppVersion" EntityType="UserService.GetAppVersion"/>
             </EntityContainer>
             <Annotations Target="UserService.Users">
                 <Annotation Term="UI.HeaderInfo">
@@ -583,6 +590,35 @@
                     <String>
                         Changed By
                     </String>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="UserService.EntityContainer/GetAppVersion">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable">
+                            <Bool>
+                                false
+                            </Bool>
+                        </PropertyValue>
+                    </Record>
                 </Annotation>
             </Annotations>
         </Schema>

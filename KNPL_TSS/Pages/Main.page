@@ -55,7 +55,6 @@
 	"_Type": "Page",
 	"_Name": "Main",
 	"Caption": "Home",
-	"OnLoaded": "/KNPL_TSS/Actions/RESTUpdateUserLog.action",
 	"ActionBar": {
 		"Items": [
 			{

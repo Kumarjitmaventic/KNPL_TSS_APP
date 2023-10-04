@@ -16,7 +16,7 @@
 		"env": {
 		  "PORT": "6004",
 		  "MOCK_LOOKUP_DIRS": "[\"webapp\"]",
-		  "run.config": "{\"handlerId\":\"ui5_run_config_handler_id\",\"runnableId\":\"/home/user/projects/KNPL_TSS-Android/WebApplicationFactory/MDKModule\"}"
+		  "run.config": "{\"handlerId\":\"ui5_run_config_handler_id\",\"runnableId\":\"/home/user/projects/KNPL_TSS_APP/WebApplicationFactory/MDKModule\"}"
 		},
 		"envFile": "${workspaceFolder}/.vscode/.envmdk"
 	  }
